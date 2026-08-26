@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الشركات المحتضنة والخريجون | حاضنة الأعمال التكنولوجية رواق</title>
   <meta name="description" content="تصفح دليل الشركات الناشئة والخريجين المبتكرين في حاضنة رواق بجامعة الأزهر.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="logo-group">
-        <img src="logo.png" alt="شعار حاضنة رواق" class="logo-img">
+        <img src="images/logo.png" alt="شعار حاضنة رواق" class="logo-img">
         <div class="logo-text">
           <h1>حاضنة رواق RWAQ</h1>
           <span>مركز الابتكار وريادة الأعمال - جامعة الأزهر</span>
@@ -32,11 +32,12 @@
         <li><a href="mentors.html">الموجهون والخبراء</a></li>
         <li><a href="news.html">الأخبار والفعاليات</a></li>
         <li><a href="contact.html">تواصل معنا</a></li>
+        <li><a href="admin.html" style="color: var(--secondary); font-weight: 800;"><i class="fas fa-lock"></i> لوحة التحكم</a></li>
       </ul>
 
       <div class="nav-actions">
         <a href="#apply" class="btn btn-primary open-modal-btn">
-          <i class="fas fa-rocket"></i> قدم مشروعك الآن
+          <i class="fas fa-rocket"></i> <span class="nav-btn-text">قدم مشروعك الآن</span>
         </a>
         <button class="menu-toggle" aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
@@ -45,11 +46,16 @@
 
   <!-- Page Banner -->
   <div class="page-banner">
-    <div class="page-banner-content">
-      <h1 class="page-title">دليل الشركات الناشئة المحتضنة</h1>
-      <p class="page-subtitle">نستعرض نماذج النجاح الوطنية المشرفة التي تلقت الدعم والتمويل والتوجيه من حاضنة رواق</p>
-      <div class="breadcrumbs">
-        <a href="index.html">الرئيسية</a> <span>/</span> <span>الشركات المحتضنة</span>
+    <div class="page-banner-container">
+      <div class="page-banner-content">
+        <h1 class="page-title">دليل الشركات الناشئة المحتضنة</h1>
+        <p class="page-subtitle">نستعرض نماذج النجاح الوطنية المشرفة التي تلقت الدعم والتمويل والتوجيه من حاضنة رواق</p>
+        <div class="breadcrumbs">
+          <a href="index.html">الرئيسية</a> <span>/</span> <span>الشركات المحتضنة</span>
+        </div>
+      </div>
+      <div class="page-banner-visual">
+        <img src="images/startups_hero.png" alt="الشركات المحتضنة">
       </div>
     </div>
   </div>
@@ -233,8 +239,14 @@
     <div class="footer-container">
       <div class="footer-brand">
         <h2>حاضنة رواق RWAQ</h2>
-        <p>مركز الابتكار وريادة الأعمال بجامعة الأزهر - حاضنة تكنولوجية معتمدة.</p>
+        <p>مركز الابتكار وريادة الأعمال بجامعة الأزهر - حاضنة تكنولوجية معتمدة تبني الشركات الناشئة وتطور نماذج أعمال قوية.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61586076763384&locale=ar_AR" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        </div>
       </div>
+
       <div class="footer-col">
         <h4>روابط السريعة</h4>
         <ul class="footer-links">
@@ -242,22 +254,32 @@
           <li><a href="about.html">عن رواق</a></li>
           <li><a href="programs.html">البرامج</a></li>
           <li><a href="startups.html">الشركات المحتضنة</a></li>
+          <li><a href="mentors.html">الموجهون</a></li>
+          <li><a href="news.html">الأخبار</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+          <li><a href="admin.html">لوحة التحكم الإدارية</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>روابط هامة</h4>
         <ul class="footer-links">
           <li><a href="https://eeic.gov.eg/" target="_blank">مركز مصر لريادة الأعمال EEIC</a></li>
           <li><a href="https://tiec.gov.eg/" target="_blank">مركز تقييم التكنولوجيا TIEC</a></li>
+          <li><a href="#">جامعة الأزهر</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>تواصل معنا</h4>
         <ul class="footer-links">
           <li><i class="fas fa-map-marker-alt"></i> القاهرة - جامعة الأزهر بمدينة نصر</li>
+          <li><i class="fas fa-envelope"></i> info@rwaq-azhar.edu.eg</li>
+          <li><i class="fas fa-phone"></i> +20 2 22600000</li>
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>© 2026 حاضنة الأعمال التكنولوجية رواق - جامعة الأزهر. جميع الحقوق محفوظة.</p>
     </div>
@@ -266,7 +288,7 @@
   <!-- Firebase SDK Compat via CDN -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="script.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

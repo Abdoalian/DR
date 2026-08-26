@@ -36,6 +36,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }
     });
+
+    // Close mobile menu when nav link is clicked
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
+    });
   }
 
   // Modal Functionality
@@ -340,7 +350,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return `
         <div class="mentor-card reveal-on-scroll hover-lift ${delayClass}">
           <div class="mentor-header">
-            <div class="mentor-avatar"><i class="fas fa-user-tie"></i></div>
+            <div class="mentor-avatar"><img src="${m.image || 'images/avatar_placeholder.png'}" alt="${m.name}" onerror="this.src='images/avatar_placeholder.png'"></div>
             <div>
               <h3 class="mentor-name">${m.name}</h3>
               <span class="mentor-title">${m.title}</span>
@@ -376,7 +386,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return `
         <div class="startup-card reveal-on-scroll hover-lift ${delayClass}">
           <div style="height: 200px; overflow: hidden; background: #EEF2F6; display: flex; align-items: center; justify-content: center;">
-            <img src="${n.image || 'event.png'}" alt="${n.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='event.png'">
+            <img src="${n.image || 'images/event.png'}" alt="${n.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/event.png'">
           </div>
           <div class="startup-body">
             <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">${formattedDate}</span>
