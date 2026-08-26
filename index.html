@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاضنة الأعمال التكنولوجية رواق | مركز الابتكار وريادة الأعمال - جامعة الأزهر</title>
+  <meta name="description" content="حاضنة الأعمال التكنولوجية رواق (RWAQ) بمركز الابتكار وريادة الأعمال جامعة الأزهر - تبني الشركات الناشئة وتطوير نماذج الأعمال القابلة للاستثمار والدخول للمنافسة في السوق.">
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Firebase SDK Compat via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+  <!-- Atmospheric Background Blobs -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <img src="logo.png" alt="شعار حاضنة رواق" class="logo-img">
+        <div class="logo-text">
+          <h1>حاضنة رواق RWAQ</h1>
+          <span>مركز الابتكار وريادة الأعمال - جامعة الأزهر</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="about.html">عن رواق</a></li>
+        <li><a href="programs.html">البرامج والاحتضان</a></li>
+        <li><a href="startups.html">الشركات المحتضنة</a></li>
+        <li><a href="mentors.html">الموجهون والخبراء</a></li>
+        <li><a href="news.html">الأخبار والفعاليات</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+        <li><a href="admin.html" style="color: var(--secondary); font-weight: 800;"><i class="fas fa-lock"></i> لوحة التحكم</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#apply" class="btn btn-primary open-modal-btn">
+          <i class="fas fa-rocket"></i> قدم مشروعك الآن
+        </a>
+        <button class="menu-toggle" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-award"></i>
+        <span>البيئة المتكاملة لالتحاق وتطوير الابتكارات في مصر</span>
+      </div>
+      <h1 class="hero-title">
+        نحو مستقبلك الريادي مع <br>
+        <span class="gradient-text">حاضنة الأعمال رواق RWAQ</span>
+      </h1>
+      <p class="hero-desc">
+        نساعد الطلاب والباحثين والمبتكرين في جامعة الأزهر ومصر على تحويل أفكارهم البحثية والتكنولوجية إلى شركات ناشئة واعدة قابلة للتوسع وجاهزة لجولات استثمارية ناجحة.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="#apply" class="btn btn-primary open-modal-btn">
+          <i class="fas fa-paper-plane"></i> تقديم طلب الانضمام
+        </a>
+        <a href="programs.html" class="btn btn-secondary">
+          <i class="fas fa-compass"></i> استكشف برامج الاحتضان
+        </a>
+      </div>
+
+      <div class="hero-stats-row">
+        <div class="stat-item">
+          <h3>+<span class="counter" data-target="45">0</span></h3>
+          <p>شركة ناشئة متخرجة</p>
+        </div>
+        <div class="stat-item">
+          <h3>+<span class="counter" data-target="120">0</span></h3>
+          <p>جلسة إرشاد وتوجيه</p>
+        </div>
+        <div class="stat-item">
+          <h3>+<span class="counter" data-target="15">0</span>M</h3>
+          <p>تمويلات واستثمارات</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-image-wrapper">
+        <img src="hero.png" alt="مبتكرون ومؤسسون في حاضنة رواق">
+      </div>
+      
+      <div class="floating-card card-1">
+        <div class="fc-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="fc-text">
+          <h4>ابتكار موجه للسوق</h4>
+          <p>دعم فني وتمويلي متكامل</p>
+        </div>
+      </div>
+
+      <div class="floating-card card-2">
+        <div class="fc-icon" style="background: var(--accent-gradient)"><i class="fas fa-chart-line"></i></div>
+        <div class="fc-text">
+          <h4>+85% نسبة النجاح</h4>
+          <p>نمو ملموس وجاهزية للاستثمار</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategic Partners / Affiliations -->
+  <div class="affiliations">
+    <div class="affiliations-container">
+      <p class="affiliations-title">بالشراكة والدعم مع الجهات الوطنية الرائدة في ريادة الأعمال</p>
+      <div class="affiliations-grid">
+        <div class="partner-logo"><i class="fas fa-university"></i> جامعة الأزهر</div>
+        <div class="partner-logo"><i class="fas fa-microscope"></i> أكاديمية البحث العلمي والتكنولوجيا (ASRT)</div>
+        <div class="partner-logo"><i class="fas fa-building-columns"></i> مركز مصر لريادة الأعمال (EEIC)</div>
+        <div class="partner-logo"><i class="fas fa-laptop-code"></i> مركز تقييم وخدمات التكنولوجيا (TIEC)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services / Pillars -->
+  <section id="services" class="section">
+    <div class="section-header">
+      <span class="section-tag">منظومة الدعم المتكاملة</span>
+      <h2 class="section-title">لماذا تختار حاضنة رواق لتطوير مشروعك؟</h2>
+      <p class="section-subtitle">نوفر للمبتكرين والشركات الناشئة كافة الموارد والتوجيهات اللازمة للعبور من مرحلة الفكرة إلى السوق الواقعي.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card reveal-on-scroll hover-lift delay-100">
+        <div class="pillar-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+        <h3 class="pillar-title">التمويل المبدئي والدعم</h3>
+        <p class="pillar-desc">تقديم منح ودعم تمويلي أولي لتطوير النموذج الأول المقبول (MVP) بدون الاحتفاظ بحصص ملكية تعجيزية.</p>
+        <a href="programs.html" class="pillar-link">اقرأ التفاصيل <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="pillar-card reveal-on-scroll hover-lift delay-200">
+        <div class="pillar-icon"><i class="fas fa-user-tie"></i></div>
+        <h3 class="pillar-title">شبكة الموجهين والاستشاريين</h3>
+        <p class="pillar-desc">جلسات توجيه فردية ومستمرة مع خبراء وصناع قرار في مجالات التكنولوجيا والإدارة والتسويق والاستثمار.</p>
+        <a href="mentors.html" class="pillar-link">تصفح الشبكة <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="pillar-card reveal-on-scroll hover-lift delay-300">
+        <div class="pillar-icon"><i class="fas fa-laptop-house"></i></div>
+        <h3 class="pillar-title">مساحات عمل ومشاتل تكنولوجية</h3>
+        <p class="pillar-desc">استفد من مكاتب حديثة، إنترنت فائق السرعة، قاعات اجتماعات، ومعامل تصنيع واختبار النماذج الأولية.</p>
+        <a href="about.html" class="pillar-link">معرض المعامل <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="pillar-card reveal-on-scroll hover-lift delay-400">
+        <div class="pillar-icon"><i class="fas fa-scale-balanced"></i></div>
+        <h3 class="pillar-title">الدعم القانوني والملكية الفكرية</h3>
+        <p class="pillar-desc">مساعدة الفرق المحتضنة في تسجيل براءات الاختراع، تأسيس الشركات رسمياً، وصياغة العقود التجارية.</p>
+        <a href="contact.html" class="pillar-link">التواصل معنا <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Split Feature -->
+  <section class="section reveal-fade" style="background: white; border-radius: var(--radius-xl); padding: 4rem 2rem;">
+    <div class="split-feature">
+      <div class="reveal-slide-right delay-100">
+        <img src="coworking.png" alt="مساحات العمل بيئة ابتكارية متكاملة" class="split-feature-img">
+      </div>
+      <div class="split-feature-content reveal-slide-left delay-200">
+        <span class="section-tag">بيئة عمل رائدة</span>
+        <h3>مساحات عمل مجهزة وأدوات تطوير نمطية</h3>
+        <p>مقر حاضنة رواق بمركز الابتكار جامعة الأزهر مصمم ليوفر للفرق المحتضنة بيئة محفزة للابتكار والإنتاجية مع الوصول المباشر للمعامل والمستشارين.</p>
+        <a href="about.html" class="btn btn-secondary">تعرف أكثر على المقر</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Incubation Process Timeline -->
+  <section id="timeline" class="section">
+    <div class="section-header reveal-on-scroll">
+      <span class="section-tag">رحلة النمو</span>
+      <h2 class="section-title">خطوات مسار الاحتضان في رواق</h2>
+      <p class="section-subtitle">منهجية علمية وعملية مرحلية تضمن تحويل الابتكار إلى شركة ناجحة في السوق.</p>
+    </div>
+
+    <div class="timeline-container">
+      <div class="timeline-line">
+        <div class="timeline-progress"></div>
+      </div>
+
+      <div class="timeline-steps">
+        <div class="step-card active reveal-on-scroll hover-lift delay-100">
+          <div class="step-number">1</div>
+          <h3 class="step-title">تقديم الطلب والفرز</h3>
+          <p class="step-desc">استقبال أفكار المشروعات وتقييمها من قِبل لجنة الخبراء بناءً على الابتكار وحاجة السوق.</p>
+        </div>
+
+        <div class="step-card active reveal-on-scroll hover-lift delay-200">
+          <div class="step-number">2</div>
+          <h3 class="step-title">معسكر التقييم والاحتضان</h3>
+          <p class="step-desc">ورق عمل مكثفة لتدريب الفرق على نموذج الأعمال والتأهل للمرحلة التمويلية.</p>
+        </div>
+
+        <div class="step-card active reveal-on-scroll hover-lift delay-300">
+          <div class="step-number">3</div>
+          <h3 class="step-title">تطوير الـ MVP والمنتج</h3>
+          <p class="step-desc">تقديم التمويل والدعم الفني لبناء النموذج الأولي وااختباره مع مستخدمين حقيقيين.</p>
+        </div>
+
+        <div class="step-card reveal-on-scroll hover-lift delay-400">
+          <div class="step-number">4</div>
+          <h3 class="step-title">يوم العرض والتشبيك Demo Day</h3>
+          <p class="step-desc">عرض المشروعات أمام المستثمرين ورجال الأعمال للحصول على جولات استثمارية وتوسع.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Startups Showcase Preview -->
+  <section id="startups" class="section">
+    <div class="section-header">
+      <span class="section-tag">قصص النجاح</span>
+      <h2 class="section-title">شركات ناشئة خرجت من حاضنة رواق</h2>
+      <p class="section-subtitle">استكشف نماذج الابتكار الوطنية التي أسسها طلاب وباحثو الأزهر والمبتكرون الشباب.</p>
+    </div>
+
+    <div class="startups-grid">
+      <div class="startup-card" data-category="ai">
+        <div class="startup-header">
+          <div class="startup-logo"><i class="fas fa-brain"></i></div>
+          <span class="startup-tag">الذكاء الاصطناعي</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">نظام دراية AI</h3>
+          <p class="startup-desc">منصة ذكاء اصطناعي لتحليل البيانات الزراعية والتنبؤ بآفات المحاصيل قبل حدوثها باستخدام المعالجة الطيفية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-user-graduate"></i> كلية الهندسة</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> تم التخرج 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="startup-card" data-category="health">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #EC4899;"><i class="fas fa-heart-pulse"></i></div>
+          <span class="startup-tag" style="background: rgba(236,72,153,0.1); color: #EC4899;">التكنولوجيا الطبية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">سند للرعاية الصحية</h3>
+          <p class="startup-desc">جهاز محمول مدمج بتطبيق ذكي لإدارة ومتابعة المؤشرات الحيوية لمرضى الحالات الحرجة عن بُعد.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-user-md"></i> كلية الطب</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="startup-card" data-category="agri">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #10B981;"><i class="fas fa-seedling"></i></div>
+          <span class="startup-tag" style="background: rgba(16,185,129,0.1); color: #10B981;">الزراعة الذكية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">أكوا فارم AquaFarm</h3>
+          <p class="startup-desc">أنظمة هيدروبونيكس مدمجة بأجهزة مستشعرات إنترنت الأشياء لرفع كفاءة استهلاك المياه بنسبة 80%.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-leaf"></i> كلية الزراعة</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> تم التخرج 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="startups.html" class="btn btn-secondary" style="padding: 0.85rem 2rem;">تصفح كافة الشركات المحتضنة <i class="fas fa-arrow-left"></i></a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="apply" class="section">
+    <div class="cta-banner">
+      <div class="cta-content">
+        <h2 class="cta-title">هل لديك فكرة مبتكرة تريد تحويلها لشركة ناجحة؟</h2>
+        <p class="cta-desc">باب التقديم لدورة الاحتضان الجديدة مفتوح الآن لطلاب وباحثي جامعة الأزهر والمبتكرين في مصر. احصل على الدعم والتمويل اللازمين.</p>
+        <button class="btn btn-primary open-modal-btn" style="font-size: 1.1rem; padding: 1rem 2.25rem;">
+          <i class="fas fa-rocket"></i> تقديم طلب الاحتضان الآن
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="section-header">
+      <span class="section-tag">إجابات واستفسارات</span>
+      <h2 class="section-title">الأسئلة الشائعة</h2>
+      <p class="section-subtitle">كل ما تود معرفته عن شروط وانضمام المشروعات لحاضنة الأعمال رواق.</p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item active">
+        <div class="faq-question">
+          <span>من يحق له التقديم والانضمام لحاضنة رواق؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          التقديم متاح لكافة طلاب وباحثي وخريجي جامعة الأزهر، بالإضافة إلى الفرق المبتكرة من مختلف الجامعات المصرية بشرط وجود فكرة مبتكرة قائمة على التكنولوجيا وتملك نموذج عمل واعد.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>هل تشترط الحاضنة الحصول على نسبة ملكية في الشركة؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          تعتمد الحاضنة على تقديم دعم غير استثماري (منح ومساحات عمل وتوجيه) بدعم من أكاديمية البحث العلمي والتكنولوجيا والجهات الراعية بدون الحصول على ملكية مباشرة في بداية الاحتضان.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>ما هي مدة برنامج الاحتضان بمركز الابتكار؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          تتراوح فترة الاحتضان الكاملة بين 6 أشهر إلى 12 شهراً تتخللها مراحل التوجيه والتطوير وإعداد النموذج الأول واختبار السوق حتى يوم التخرج Demo Day.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Modal Form -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3>طلب الانضمام لحاضنة رواق RWAQ</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">املأ البيانات التالية لتقييم فكرة مشروعك من قبل لجنة الخبراء</p>
+      </div>
+
+      <form id="incubationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">الاسم بالكامل *</label>
+            <input type="text" class="form-input" placeholder="أدخل اسمك الثلاثي" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني *</label>
+            <input type="email" class="form-input" placeholder="example@domain.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">رقم الهاتف / الواتساب *</label>
+            <input type="tel" class="form-input" placeholder="01012345678" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الكلية / الجامعة / الجهة *</label>
+            <input type="text" class="form-input" placeholder="مثل: هندسة الأزهر" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">اسم المشروع الناشئ *</label>
+          <input type="text" class="form-input" placeholder="أدخل اسم المشروع أو الفكرة" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">مجال المشروع *</label>
+          <select class="form-select" required>
+            <option value="">اختر المجال المناسب</option>
+            <option value="ai">الذكاء الاصطناعي والبرمجيات</option>
+            <option value="health">التكنولوجيا الطبية والصحية</option>
+            <option value="agri">الزراعة والتكنولوجيا البيئية</option>
+            <option value="fintech">التكنولوجيا المالية التجارة الإلكترونية</option>
+            <option value="other">مجالات تكنولوجية أخرى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ملخص الفكرة والمشكلة التي تحلها *</label>
+          <textarea class="form-textarea" rows="4" placeholder="اشرح فكرتك في أسطر قليلة والميزة التنافسية لها" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">
+          <i class="fas fa-paper-plane"></i> إرسال الطلب الآن
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>حاضنة رواق RWAQ</h2>
+        <p>مركز الابتكار وريادة الأعمال بجامعة الأزهر - حاضنة تكنولوجية معتمدة تبني الشركات الناشئة وتطور نماذج أعمال قوية.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61586076763384&locale=ar_AR" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط السريعة</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about.html">عن رواق</a></li>
+          <li><a href="programs.html">البرامج</a></li>
+          <li><a href="startups.html">الشركات المحتضنة</a></li>
+          <li><a href="mentors.html">الموجهون</a></li>
+          <li><a href="news.html">الأخبار</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+          <li><a href="admin.html">لوحة التحكم الإدارية</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط هامة</h4>
+        <ul class="footer-links">
+          <li><a href="https://eeic.gov.eg/" target="_blank">مركز مصر لريادة الأعمال EEIC</a></li>
+          <li><a href="https://tiec.gov.eg/" target="_blank">مركز تقييم التكنولوجيا TIEC</a></li>
+          <li><a href="#">جامعة الأزهر</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt"></i> القاهرة - جامعة الأزهر بمدينة نصر</li>
+          <li><i class="fas fa-envelope"></i> info@rwaq-azhar.edu.eg</li>
+          <li><i class="fas fa-phone"></i> +20 2 22600000</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 حاضنة الأعمال التكنولوجية رواق - جامعة الأزهر. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

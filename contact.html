@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا | حاضنة الأعمال التكنولوجية رواق</title>
+  <meta name="description" content="تواصل مع إدارة حاضنة رواق بمركز الابتكار جامعة الأزهر أو قم بزيارة مقر الحاضنة بمدينة نصر.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <img src="logo.png" alt="شعار حاضنة رواق" class="logo-img">
+        <div class="logo-text">
+          <h1>حاضنة رواق RWAQ</h1>
+          <span>مركز الابتكار وريادة الأعمال - جامعة الأزهر</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="about.html">عن رواق</a></li>
+        <li><a href="programs.html">البرامج والاحتضان</a></li>
+        <li><a href="startups.html">الشركات المحتضنة</a></li>
+        <li><a href="mentors.html">الموجهون والخبراء</a></li>
+        <li><a href="news.html">الأخبار والفعاليات</a></li>
+        <li><a href="contact.html" class="active">تواصل معنا</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#apply" class="btn btn-primary open-modal-btn">
+          <i class="fas fa-rocket"></i> قدم مشروعك الآن
+        </a>
+        <button class="menu-toggle" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="page-banner-content">
+      <h1 class="page-title">تواصل مع حاضنة رواق</h1>
+      <p class="page-subtitle">فريقنا مستعد للإجابة على جميع استفساراتك واستقبال زياراتك لمقر الحاضنة</p>
+      <div class="breadcrumbs">
+        <a href="index.html">الرئيسية</a> <span>/</span> <span>تواصل معنا</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Grid -->
+  <section class="section">
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">أرسل لنا رسالة مباشرة</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <label class="form-label">الاسم بالكامل *</label>
+            <input type="text" class="form-input" placeholder="أدخل اسمك" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني *</label>
+            <input type="email" class="form-input" placeholder="example@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">موضوع الرسالة *</label>
+            <input type="text" class="form-input" placeholder="موضوع الاستفسار" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الرسالة *</label>
+            <textarea class="form-textarea" rows="4" placeholder="اكتب استفسارك بالتفصيل..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">
+            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info & Map -->
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div class="contact-card">
+          <h3 style="font-size: 1.35rem; font-weight: 800;">بيانات التواصل المباشر</h3>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-text">
+                <h4>العنوان والمقر الرئيسي</h4>
+                <p>مبنى مركز الابتكار وريادة الأعمال، جامعة الأزهر، امتداد رمسيس، مدينة نصر، القاهرة.</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-text">
+                <h4>البريد الإلكتروني الرسمي</h4>
+                <p>info@rwaq-azhar.edu.eg | incubation@rwaq-azhar.edu.eg</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon"><i class="fab fa-facebook-messenger"></i></div>
+              <div class="contact-text">
+                <h4>صفحة الفيس بوك الرسمية</h4>
+                <p><a href="https://www.facebook.com/profile.php?id=61586076763384&locale=ar_AR" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">مركز الابتكار وريادة الأعمال جامعة الأزهر (رواق)</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card" style="padding: 1.5rem; text-align: center;">
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0.75rem;">ساعات العمل الرسمية</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">من الأحد إلى الخميس: 9:00 صباحاً - 4:00 مساءً</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Modal Form -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3>طلب الانضمام لحاضنة رواق RWAQ</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">املأ البيانات التالية لتقييم فكرة مشروعك من قبل لجنة الخبراء</p>
+      </div>
+
+      <form id="incubationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">الاسم بالكامل *</label>
+            <input type="text" class="form-input" placeholder="أدخل اسمك الثلاثي" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني *</label>
+            <input type="email" class="form-input" placeholder="example@domain.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">رقم الهاتف / الواتساب *</label>
+            <input type="tel" class="form-input" placeholder="01012345678" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الكلية / الجامعة / الجهة *</label>
+            <input type="text" class="form-input" placeholder="مثل: هندسة الأزهر" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">اسم المشروع الناشئ *</label>
+          <input type="text" class="form-input" placeholder="أدخل اسم المشروع أو الفكرة" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">مجال المشروع *</label>
+          <select class="form-select" required>
+            <option value="">اختر المجال المناسب</option>
+            <option value="ai">الذكاء الاصطناعي والبرمجيات</option>
+            <option value="health">التكنولوجيا الطبية والصحية</option>
+            <option value="agri">الزراعة والتكنولوجيا البيئية</option>
+            <option value="fintech">التكنولوجيا المالية التجارة الإلكترونية</option>
+            <option value="other">مجالات تكنولوجية أخرى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ملخص الفكرة والمشكلة التي تحلها *</label>
+          <textarea class="form-textarea" rows="4" placeholder="اشرح فكرتك في أسطر قليلة والميزة التنافسية لها" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">
+          <i class="fas fa-paper-plane"></i> إرسال الطلب الآن
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>حاضنة رواق RWAQ</h2>
+        <p>مركز الابتكار وريادة الأعمال بجامعة الأزهر.</p>
+      </div>
+      <div class="footer-col">
+        <h4>روابط السريعة</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about.html">عن رواق</a></li>
+          <li><a href="programs.html">البرامج</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>روابط هامة</h4>
+        <ul class="footer-links">
+          <li><a href="https://eeic.gov.eg/" target="_blank">EEIC</a></li>
+          <li><a href="https://tiec.gov.eg/" target="_blank">TIEC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt"></i> القاهرة - جامعة الأزهر بمدينة نصر</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 حاضنة الأعمال التكنولوجية رواق - جامعة الأزهر. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK Compat via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

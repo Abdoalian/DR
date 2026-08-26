@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الشركات المحتضنة والخريجون | حاضنة الأعمال التكنولوجية رواق</title>
+  <meta name="description" content="تصفح دليل الشركات الناشئة والخريجين المبتكرين في حاضنة رواق بجامعة الأزهر.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <img src="logo.png" alt="شعار حاضنة رواق" class="logo-img">
+        <div class="logo-text">
+          <h1>حاضنة رواق RWAQ</h1>
+          <span>مركز الابتكار وريادة الأعمال - جامعة الأزهر</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="about.html">عن رواق</a></li>
+        <li><a href="programs.html">البرامج والاحتضان</a></li>
+        <li><a href="startups.html" class="active">الشركات المحتضنة</a></li>
+        <li><a href="mentors.html">الموجهون والخبراء</a></li>
+        <li><a href="news.html">الأخبار والفعاليات</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#apply" class="btn btn-primary open-modal-btn">
+          <i class="fas fa-rocket"></i> قدم مشروعك الآن
+        </a>
+        <button class="menu-toggle" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="page-banner-content">
+      <h1 class="page-title">دليل الشركات الناشئة المحتضنة</h1>
+      <p class="page-subtitle">نستعرض نماذج النجاح الوطنية المشرفة التي تلقت الدعم والتمويل والتوجيه من حاضنة رواق</p>
+      <div class="breadcrumbs">
+        <a href="index.html">الرئيسية</a> <span>/</span> <span>الشركات المحتضنة</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search & Filters -->
+  <section class="section">
+    <div style="max-width: 600px; margin: 0 auto 3rem;">
+      <input type="text" id="startupSearch" class="form-input" placeholder="🔍 ابحث عن اسم شركة، تخصص، أو كلية..." style="padding: 1rem; border-radius: var(--radius-full); box-shadow: var(--card-shadow);">
+    </div>
+
+    <div class="startup-filters">
+      <button class="filter-btn active" data-filter="all">جميع القطاعات</button>
+      <button class="filter-btn" data-filter="ai">الذكاء الاصطناعي والبرمجيات</button>
+      <button class="filter-btn" data-filter="health">التكنولوجيا الطبية</button>
+      <button class="filter-btn" data-filter="agri">الزراعة والتكنولوجيا البيئية</button>
+      <button class="filter-btn" data-filter="fintech">التكنولوجيا المالية</button>
+    </div>
+
+    <div class="startups-grid" id="startupsContainer">
+      <!-- Startup Card 1 -->
+      <div class="startup-card" data-category="ai">
+        <div class="startup-header">
+          <div class="startup-logo"><i class="fas fa-brain"></i></div>
+          <span class="startup-tag">الذكاء الاصطناعي</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">نظام دراية AI</h3>
+          <p class="startup-desc">منصة ذكاء اصطناعي لتحليل البيانات الزراعية والتنبؤ بآفات المحاصيل قبل حدوثها باستخدام المعالجة الطيفية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-user-graduate"></i> كلية الهندسة</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Startup Card 2 -->
+      <div class="startup-card" data-category="health">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #EC4899;"><i class="fas fa-heart-pulse"></i></div>
+          <span class="startup-tag" style="background: rgba(236,72,153,0.1); color: #EC4899;">التكنولوجيا الطبية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">سند للرعاية الصحية</h3>
+          <p class="startup-desc">جهاز محمول مدمج بتطبيق ذكي لإدارة ومتابعة المؤشرات الحيوية لمرضى الحالات الحرجة عن بُعد.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-user-md"></i> كلية الطب</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Startup Card 3 -->
+      <div class="startup-card" data-category="agri">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #10B981;"><i class="fas fa-seedling"></i></div>
+          <span class="startup-tag" style="background: rgba(16,185,129,0.1); color: #10B981;">الزراعة الذكية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">أكوا فارم AquaFarm</h3>
+          <p class="startup-desc">أنظمة هيدروبونيكس مدمجة بأجهزة مستشعرات إنترنت الأشياء لرفع كفاءة استهلاك المياه بنسبة 80%.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-leaf"></i> كلية الزراعة</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Startup Card 4 -->
+      <div class="startup-card" data-category="fintech">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #F59E0B;"><i class="fas fa-coins"></i></div>
+          <span class="startup-tag" style="background: rgba(245,158,11,0.1); color: #F59E0B;">التكنولوجيا المالية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">محفظة تيسير Pay</h3>
+          <p class="startup-desc">حلول مدفوعات رقمية متوافقة مع الشريعة الإسلامية وموجهة للتجار والمشاريع الصغرى والمتناهية الصغر.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calculator"></i> كلية التجارة</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Startup Card 5 -->
+      <div class="startup-card" data-category="ai">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #3B82F6;"><i class="fas fa-robot"></i></div>
+          <span class="startup-tag" style="background: rgba(59,130,246,0.1); color: #3B82F6;">الذكاء الاصطناعي</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">روبوتكس للحلول الصناعية</h3>
+          <p class="startup-desc">تصميم أذرع روبوتية ذكية مدعومة بالرؤية الحاسوبية لفرز المنتجات وتجميعها في خطوط الإنتاج.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-microchip"></i> كلية الهندسة</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Startup Card 6 -->
+      <div class="startup-card" data-category="agri">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #8B5CF6;"><i class="fas fa-solar-panel"></i></div>
+          <span class="startup-tag" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">طاقة ونظافة بيئية</span>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">شمس للطاقة النظيفة</h3>
+          <p class="startup-desc">تطوير مضخات مياه شمسية ذكية تعمل بنظام التبريد الذاتي وتزيد من كفاءة توليد الكهرباء في الصعيد.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-atom"></i> كلية العلوم</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Modal Form -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h3>طلب الانضمام لحاضنة رواق RWAQ</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">املأ البيانات التالية لتقييم فكرة مشروعك من قبل لجنة الخبراء</p>
+      </div>
+
+      <form id="incubationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">الاسم بالكامل *</label>
+            <input type="text" class="form-input" placeholder="أدخل اسمك الثلاثي" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني *</label>
+            <input type="email" class="form-input" placeholder="example@domain.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">رقم الهاتف / الواتساب *</label>
+            <input type="tel" class="form-input" placeholder="01012345678" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الكلية / الجامعة / الجهة *</label>
+            <input type="text" class="form-input" placeholder="مثل: هندسة الأزهر" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">اسم المشروع الناشئ *</label>
+          <input type="text" class="form-input" placeholder="أدخل اسم المشروع أو الفكرة" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">مجال المشروع *</label>
+          <select class="form-select" required>
+            <option value="">اختر المجال المناسب</option>
+            <option value="ai">الذكاء الاصطناعي والبرمجيات</option>
+            <option value="health">التكنولوجيا الطبية والصحية</option>
+            <option value="agri">الزراعة والتكنولوجيا البيئية</option>
+            <option value="fintech">التكنولوجيا المالية التجارة الإلكترونية</option>
+            <option value="other">مجالات تكنولوجية أخرى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ملخص الفكرة والمشكلة التي تحلها *</label>
+          <textarea class="form-textarea" rows="4" placeholder="اشرح فكرتك في أسطر قليلة والميزة التنافسية لها" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">
+          <i class="fas fa-paper-plane"></i> إرسال الطلب الآن
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>حاضنة رواق RWAQ</h2>
+        <p>مركز الابتكار وريادة الأعمال بجامعة الأزهر - حاضنة تكنولوجية معتمدة.</p>
+      </div>
+      <div class="footer-col">
+        <h4>روابط السريعة</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about.html">عن رواق</a></li>
+          <li><a href="programs.html">البرامج</a></li>
+          <li><a href="startups.html">الشركات المحتضنة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>روابط هامة</h4>
+        <ul class="footer-links">
+          <li><a href="https://eeic.gov.eg/" target="_blank">مركز مصر لريادة الأعمال EEIC</a></li>
+          <li><a href="https://tiec.gov.eg/" target="_blank">مركز تقييم التكنولوجيا TIEC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt"></i> القاهرة - جامعة الأزهر بمدينة نصر</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 حاضنة الأعمال التكنولوجية رواق - جامعة الأزهر. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK Compat via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
