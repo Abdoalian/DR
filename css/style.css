@@ -273,17 +273,19 @@ header.scrolled {
 }
 
 .logo-img {
-  height: 58px;
-  width: 58px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.2);
+  height: 75px;
+  width: auto;
+  max-width: 85px;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
 
 .logo-group:hover .logo-img {
-  transform: scale(1.05) rotate(-2deg);
+  transform: scale(1.06);
 }
 
 .logo-text {
@@ -295,7 +297,7 @@ header.scrolled {
 }
 
 .logo-text h1 {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 900;
   color: var(--text-main);
   line-height: 1.2;
@@ -304,7 +306,7 @@ header.scrolled {
 }
 
 .logo-text span {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-weight: 700;
   white-space: nowrap;
