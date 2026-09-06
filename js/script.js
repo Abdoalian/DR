@@ -515,6 +515,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (carouselWrapper) {
       carouselWrapper.addEventListener('mouseenter', stopAutoplay);
       carouselWrapper.addEventListener('mouseleave', startAutoplay);
+
+      // Mobile Touch / Swipe Gesture
+      let tTouchStartX = 0;
+      let tTouchEndX = 0;
+      carouselWrapper.addEventListener('touchstart', (e) => {
+        tTouchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+
+      carouselWrapper.addEventListener('touchend', (e) => {
+        tTouchEndX = e.changedTouches[0].screenX;
+        const diff = tTouchStartX - tTouchEndX;
+        if (diff > 45) {
+          nextSlide();
+        } else if (diff < -45) {
+          prevSlide();
+        }
+        startAutoplay();
+      }, { passive: true });
     }
 
     startAutoplay();
@@ -595,6 +614,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (wrapper) {
       wrapper.addEventListener('mouseenter', stopTimer);
       wrapper.addEventListener('mouseleave', startTimer);
+
+      // Mobile Touch / Swipe Gesture
+      let hnTouchStartX = 0;
+      let hnTouchEndX = 0;
+      wrapper.addEventListener('touchstart', (e) => {
+        hnTouchStartX = e.changedTouches[0].screenX;
+        stopTimer();
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', (e) => {
+        hnTouchEndX = e.changedTouches[0].screenX;
+        const diff = hnTouchStartX - hnTouchEndX;
+        if (diff > 45) {
+          nextNews();
+        } else if (diff < -45) {
+          prevNews();
+        }
+        startTimer();
+      }, { passive: true });
     }
 
     window.addEventListener('resize', updateCarouselPosition);
