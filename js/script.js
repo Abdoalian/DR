@@ -442,4 +442,63 @@ document.addEventListener('DOMContentLoaded', async () => {
       el.style.setProperty('--mouse-y', `${y}px`);
     });
   });
+  // ----------------------------------------------------
+  // Beneficiaries Testimonials Carousel Logic
+  // ----------------------------------------------------
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  const prevBtn = document.getElementById('testimonialPrev');
+  const nextBtn = document.getElementById('testimonialNext');
+  const dotsContainer = document.getElementById('testimonialDots');
+  let currentSlide = 0;
+  let autoplayInterval = null;
+
+  if (testimonialCards.length > 0) {
+    testimonialCards.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(idx));
+      if (dotsContainer) dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+
+    function goToSlide(index) {
+      testimonialCards.forEach((card, idx) => {
+        card.classList.toggle('active', idx === index);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % testimonialCards.length;
+      goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+      const prevIndex = (currentSlide - 1 + testimonialCards.length) % testimonialCards.length;
+      goToSlide(prevIndex);
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 5500);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    }
+
+    const carouselWrapper = document.querySelector('.testimonials-carousel-wrapper');
+    if (carouselWrapper) {
+      carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+      carouselWrapper.addEventListener('mouseleave', startAutoplay);
+    }
+
+    startAutoplay();
+  }
 });
