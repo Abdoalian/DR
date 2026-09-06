@@ -596,7 +596,7 @@ header.scrolled {
 }
 
 .stat-item h3 {
-  font-size: 2.2rem;
+  font-size: 2.35rem;
   font-weight: 900;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -606,13 +606,29 @@ header.scrolled {
   margin-bottom: 0.4rem;
   font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
   letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  direction: ltr;
 }
 
-.stat-item p,
-.stat-item span {
-  font-size: 0.82rem;
+.stat-item h3 span.counter,
+.stat-item h3 span {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  background: inherit !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block;
+}
+
+.stat-item p {
+  font-size: 0.88rem;
   color: var(--text-muted);
-  font-weight: 700;
+  font-weight: 750;
   line-height: 1.4;
 }
 

@@ -275,21 +275,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
     };
 
-    if (startupsContainer) {
-      if (startups.length === 0) {
-        startupsContainer.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">لا توجد شركات مسجلة حالياً.</div>`;
-      } else {
-        startupsContainer.innerHTML = startups.map((st, idx) => createCardHtml(st, idx)).join('');
-      }
+    if (startupsContainer && startups.length > 0) {
+      startupsContainer.innerHTML = startups.map((st, idx) => createCardHtml(st, idx)).join('');
     }
 
-    if (homepageStartupsGrid) {
+    if (homepageStartupsGrid && startups.length > 0) {
       const topStartups = startups.slice(0, 3);
-      if (topStartups.length === 0) {
-        homepageStartupsGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">لا توجد شركات مسجلة حالياً.</div>`;
-      } else {
-        homepageStartupsGrid.innerHTML = topStartups.map((st, idx) => createCardHtml(st, idx)).join('');
-      }
+      homepageStartupsGrid.innerHTML = topStartups.map((st, idx) => createCardHtml(st, idx)).join('');
     }
 
     // Attach filter operations dynamically
@@ -338,33 +330,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mentorsGrid = document.querySelector('.mentors-grid');
     if (!mentorsGrid || !window.RwaqDB) return;
 
-    const mentors = await window.RwaqDB.getMentors();
-    if (mentors.length === 0) {
-      mentorsGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">لا توجد بيانات موجهين حالياً.</div>`;
-      return;
-    }
+    try {
+      const mentors = await window.RwaqDB.getMentors();
+      if (!mentors || mentors.length === 0) return;
 
-    mentorsGrid.innerHTML = mentors.map((m, idx) => {
-      const tagsHtml = m.tags.split(',').map(tag => `<span class="mentor-tag">${tag.trim()}</span>`).join('');
-      const delayClass = `delay-${((idx % 4) + 1) * 100}`;
-      return `
-        <div class="mentor-card reveal-on-scroll hover-lift ${delayClass}">
-          <div class="mentor-header">
-            <div class="mentor-avatar"><img src="${m.image || 'images/avatar_placeholder.png'}" alt="${m.name}" onerror="this.src='images/avatar_placeholder.png'"></div>
-            <div>
-              <h3 class="mentor-name">${m.name}</h3>
-              <span class="mentor-title">${m.title}</span>
+      const featuredCard = mentorsGrid.querySelector('.mentor-card.featured');
+      const dynamicCardsHtml = mentors.map((m, idx) => {
+        const tagsHtml = (m.tags || '').split(',').map(tag => `<span class="mentor-tag">${tag.trim()}</span>`).join('');
+        const delayClass = `delay-${((idx % 4) + 1) * 100}`;
+        return `
+          <div class="mentor-card reveal-on-scroll hover-lift ${delayClass}">
+            <div class="mentor-header">
+              <div class="mentor-avatar"><img src="${m.image || 'images/avatar_placeholder.png'}" alt="${m.name}" onerror="this.src='images/avatar_placeholder.png'"></div>
+              <div>
+                <h3 class="mentor-name">${m.name}</h3>
+                <span class="mentor-title">${m.title}</span>
+              </div>
+            </div>
+            <div class="mentor-body">
+              <p>${m.bio}</p>
+              <div class="mentor-tags">
+                ${tagsHtml}
+              </div>
             </div>
           </div>
-          <div class="mentor-body">
-            <p>${m.bio}</p>
-            <div class="mentor-tags">
-              ${tagsHtml}
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
+
+      if (featuredCard) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = dynamicCardsHtml;
+        Array.from(tempDiv.children).forEach(child => mentorsGrid.appendChild(child));
+      } else {
+        mentorsGrid.innerHTML = dynamicCardsHtml;
+      }
+    } catch (e) {
+      console.log('Preserving static mentors fallback');
+    }
   }
 
   // ----------------------------------------------------
@@ -374,29 +376,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     const newsGrid = document.getElementById('newsGridContainer');
     if (!newsGrid || !window.RwaqDB) return;
 
-    const newsList = await window.RwaqDB.getNews();
-    if (newsList.length === 0) {
-      newsGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">لا توجد أخبار أو فعاليات منشورة حالياً.</div>`;
-      return;
-    }
+    try {
+      const newsList = await window.RwaqDB.getNews();
+      if (!newsList || newsList.length === 0) return;
 
-    newsGrid.innerHTML = newsList.map((n, idx) => {
-      const formattedDate = new Date(n.date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-      const delayClass = `delay-${((idx % 3) + 1) * 100}`;
-      return `
-        <div class="startup-card reveal-on-scroll hover-lift ${delayClass}">
-          <div style="height: 200px; overflow: hidden; background: #EEF2F6; display: flex; align-items: center; justify-content: center;">
-            <img src="${n.image || 'images/event.png'}" alt="${n.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/event.png'">
+      newsGrid.innerHTML = newsList.map((n, idx) => {
+        const formattedDate = new Date(n.date).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+        const delayClass = `delay-${((idx % 3) + 1) * 100}`;
+        return `
+          <div class="startup-card reveal-on-scroll hover-lift ${delayClass}">
+            <div style="height: 200px; overflow: hidden; background: #EEF2F6; display: flex; align-items: center; justify-content: center;">
+              <img src="${n.image || 'images/event.png'}" alt="${n.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/event.png'">
+            </div>
+            <div class="startup-body">
+              <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">${formattedDate}</span>
+              <h3 class="startup-name" style="margin-top: 0.4rem;">${n.title}</h3>
+              <p class="startup-desc">${n.summary}</p>
+              <a href="#" class="pillar-link">قراءة الخبر كاملاً <i class="fas fa-arrow-left"></i></a>
+            </div>
           </div>
-          <div class="startup-body">
-            <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">${formattedDate}</span>
-            <h3 class="startup-name" style="margin-top: 0.4rem;">${n.title}</h3>
-            <p class="startup-desc">${n.summary}</p>
-            <a href="#" class="pillar-link">قراءة الخبر كاملاً <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
+    } catch (e) {
+      console.log('Preserving static news fallback');
+    }
   }
 
   // Initialize public pages data rendering
