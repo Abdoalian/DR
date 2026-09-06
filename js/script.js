@@ -502,21 +502,84 @@ document.addEventListener('DOMContentLoaded', async () => {
     startAutoplay();
   }
 
-  // Hero News Carousel Navigation
+  // Hero News Auto-Rotating Carousel
+  const hnTrack = document.getElementById('hnCarouselTrack');
   const hnPrevBtn = document.getElementById('hnPrevBtn');
   const hnNextBtn = document.getElementById('hnNextBtn');
-  const hnTrack = document.getElementById('hnCarouselTrack');
 
   if (hnTrack) {
-    if (hnNextBtn) {
-      hnNextBtn.addEventListener('click', () => {
-        hnTrack.scrollBy({ left: -320, behavior: 'smooth' });
-      });
+    const cards = hnTrack.querySelectorAll('.hn-card');
+    let currentIndex = 0;
+    let hnAutoplayTimer = null;
+
+    function getVisibleCardsCount() {
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 992) return 2;
+      return 3;
     }
-    if (hnPrevBtn) {
-      hnPrevBtn.addEventListener('click', () => {
-        hnTrack.scrollBy({ left: 320, behavior: 'smooth' });
-      });
+
+    function updateCarouselPosition() {
+      if (cards.length === 0) return;
+      const visibleCount = getVisibleCardsCount();
+      const maxIndex = Math.max(0, cards.length - visibleCount);
+      if (currentIndex > maxIndex) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = maxIndex;
+
+      const cardElement = cards[0];
+      const cardWidth = cardElement.offsetWidth;
+      const gap = 18.4; // 1.15rem gap
+      const offset = currentIndex * (cardWidth + gap);
+
+      // In RTL layout, offset moves left/right smoothly
+      hnTrack.style.transform = `translateX(${offset}px)`;
     }
+
+    function nextNews() {
+      const visibleCount = getVisibleCardsCount();
+      const maxIndex = cards.length - visibleCount;
+      if (currentIndex >= maxIndex) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      updateCarouselPosition();
+    }
+
+    function prevNews() {
+      const visibleCount = getVisibleCardsCount();
+      const maxIndex = cards.length - visibleCount;
+      if (currentIndex <= 0) {
+        currentIndex = maxIndex;
+      } else {
+        currentIndex--;
+      }
+      updateCarouselPosition();
+    }
+
+    if (hnNextBtn) hnNextBtn.addEventListener('click', () => { nextNews(); resetTimer(); });
+    if (hnPrevBtn) hnPrevBtn.addEventListener('click', () => { prevNews(); resetTimer(); });
+
+    function startTimer() {
+      stopTimer();
+      hnAutoplayTimer = setInterval(nextNews, 4000);
+    }
+
+    function stopTimer() {
+      if (hnAutoplayTimer) clearInterval(hnAutoplayTimer);
+    }
+
+    function resetTimer() {
+      stopTimer();
+      startTimer();
+    }
+
+    const wrapper = document.querySelector('.hn-carousel-wrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', stopTimer);
+      wrapper.addEventListener('mouseleave', startTimer);
+    }
+
+    window.addEventListener('resize', updateCarouselPosition);
+    startTimer();
   }
 });
