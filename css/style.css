@@ -3092,6 +3092,41 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* Floating CTA Button on Mobile */
+  .nav-actions .btn.open-modal-btn {
+    position: fixed;
+    bottom: 1.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1200;
+    width: calc(100% - 2.5rem);
+    max-width: 380px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.96rem;
+    font-weight: 850;
+    border-radius: var(--radius-full);
+    background: var(--primary-gradient);
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px var(--primary-glow);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: mobileBtnPulse 2.5s infinite ease-in-out;
+  }
+
+  .nav-actions .btn.open-modal-btn:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 14px 35px var(--primary-glow);
+  }
+
+  footer {
+    padding-bottom: 5.5rem !important;
+  }
+
   .hn-card {
     flex: 0 0 100%;
   }
@@ -3404,5 +3439,14 @@ footer {
   .menu-toggle {
     padding: 0.45rem 0.65rem;
     font-size: 1.1rem;
+  }
+}
+
+@keyframes mobileBtnPulse {
+  0%, 100% {
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.45);
+  }
+  50% {
+    box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
   }
 }
