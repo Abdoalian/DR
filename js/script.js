@@ -501,4 +501,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     startAutoplay();
   }
+
+  // Hero News Carousel Navigation
+  const hnPrevBtn = document.getElementById('hnPrevBtn');
+  const hnNextBtn = document.getElementById('hnNextBtn');
+  const hnTrack = document.getElementById('hnCarouselTrack');
+
+  if (hnTrack) {
+    if (hnNextBtn) {
+      hnNextBtn.addEventListener('click', () => {
+        hnTrack.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+    }
+    if (hnPrevBtn) {
+      hnPrevBtn.addEventListener('click', () => {
+        hnTrack.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+    }
+  }
 });

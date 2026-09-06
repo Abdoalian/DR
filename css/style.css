@@ -640,6 +640,198 @@ header.scrolled {
   line-height: 1.4;
 }
 
+/* Hero News Carousel Under Stats */
+.hero-news-container {
+  width: 100%;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px dashed var(--border);
+}
+
+.hn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.15rem;
+}
+
+.hn-title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.hn-badge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: rgba(79, 70, 229, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hn-heading {
+  font-size: 1.1rem;
+  font-weight: 850;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.hn-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.hn-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.hn-btn:hover {
+  background: var(--primary-gradient);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--primary-glow);
+}
+
+.hn-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.hn-carousel-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hn-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.hn-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+.hn-card-img {
+  position: relative;
+  height: 140px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hn-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hn-card:hover .hn-card-img img {
+  transform: scale(1.08);
+}
+
+.hn-date {
+  position: absolute;
+  bottom: 0.55rem;
+  right: 0.55rem;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hn-card-body {
+  padding: 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.hn-tag {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: rgba(79, 70, 229, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 0.5rem;
+}
+
+.hn-card-title {
+  font-size: 0.92rem;
+  font-weight: 850;
+  color: var(--text-main);
+  line-height: 1.35;
+  margin-bottom: 0.45rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hn-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.hn-read-more {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.3s ease, gap 0.3s ease;
+  margin-top: auto;
+}
+
+.hn-read-more:hover {
+  color: var(--primary-dark);
+  gap: 0.55rem;
+}
+
 /* Hero Visual Layout with Side Highlights */
 .hero-visual {
   position: relative;
@@ -2834,6 +3026,10 @@ footer {
     gap: 1.25rem;
   }
 
+  .hn-carousel-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .split-feature {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2878,6 +3074,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .hn-carousel-track {
+    grid-template-columns: 1fr;
+  }
+
   .section {
     padding: 4.5rem 1.25rem;
   }
