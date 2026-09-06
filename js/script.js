@@ -27,9 +27,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      const isOpen = navLinks.classList.contains('active');
+      document.body.classList.toggle('nav-menu-open', isOpen);
       const icon = menuToggle.querySelector('i');
       if (icon) {
-        if (navLinks.classList.contains('active')) {
+        if (isOpen) {
           icon.className = 'fas fa-times';
         } else {
           icon.className = 'fas fa-bars';
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     links.forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        document.body.classList.remove('nav-menu-open');
         const icon = menuToggle.querySelector('i');
         if (icon) icon.className = 'fas fa-bars';
       });
@@ -54,21 +57,36 @@ document.addEventListener('DOMContentLoaded', async () => {
   const closeModalBtn = document.getElementById('closeModal');
   const appForm = document.getElementById('incubationForm');
 
-  openModalBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (modalOverlay) {
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  });
+  function openModal() {
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
 
   function closeModal() {
     if (modalOverlay) {
       modalOverlay.classList.remove('active');
+      document.body.classList.remove('modal-open');
       document.body.style.overflow = 'auto';
     }
+  }
+
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Fallback / safety check for mobile floating button if loaded dynamically
+  const floatingCta = document.querySelector('.mobile-floating-cta');
+  if (floatingCta) {
+    floatingCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
   }
 
   if (closeModalBtn) {
