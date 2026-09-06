@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>لوحة التحكم والفياربيز | حاضنة الأعمال التكنولوجية رواق</title>
-  <meta name="description" content="لوحة التحكم الإدارية المتقدمة لإدارة المشروعات المحتضنة والطلبات والأخبار بحاضنة رواق.">
+  <meta name="description"
+    content="لوحة التحكم الإدارية المتقدمة لإدارة المشروعات المحتضنة والطلبات والأخبار بحاضنة رواق.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <!-- Firebase SDK Compat via CDN -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 </head>
+
 <body>
 
   <!-- Login Gate Container -->
   <div id="loginGate" class="login-gate">
     <div class="login-card">
       <div class="login-logo-group">
-        <img src="images/logo.jpg" alt="شعار حاضنة رواق" class="login-logo-img">
+        <img src="images/logo.png" alt="شعار حاضنة رواق" class="login-logo-img">
         <h2>لوحة إدارة رواق RWAQ</h2>
         <p>قم بتسجيل الدخول للوصول إلى لوحة التحكم الإدارية</p>
       </div>
       <form id="loginForm">
         <div class="form-group">
           <label class="form-label">البريد الإلكتروني *</label>
-          <input type="email" id="loginEmail" class="form-input" placeholder="admin@rwaq-azhar.edu.eg" required autocomplete="email">
+          <input type="email" id="loginEmail" class="form-input" placeholder="admin@rwaq-azhar.edu.eg" required
+            autocomplete="email">
         </div>
         <div class="form-group">
           <label class="form-label">كلمة المرور *</label>
-          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required
+            autocomplete="current-password">
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.9rem;">
           <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
@@ -49,7 +54,7 @@
     <aside class="admin-sidebar">
       <div>
         <div class="admin-brand">
-          <img src="images/logo.jpg" alt="رواق">
+          <img src="images/logo.png" alt="رواق">
           <div>
             <h2>إدارة رواق</h2>
             <span style="font-size: 0.72rem; color: #64748B;">جامعة الأزهر</span>
@@ -57,12 +62,18 @@
         </div>
 
         <ul class="admin-menu">
-          <li class="admin-menu-item"><a href="#applications" class="active" data-tab="applications"><i class="fas fa-file-signature"></i> طلبات التقديم</a></li>
-          <li class="admin-menu-item"><a href="#startups" data-tab="startups"><i class="fas fa-rocket"></i> المشروعات المحتضنة</a></li>
-          <li class="admin-menu-item"><a href="#mentors" data-tab="mentors"><i class="fas fa-user-tie"></i> شبكة الموجهين</a></li>
-          <li class="admin-menu-item"><a href="#news" data-tab="news"><i class="fas fa-newspaper"></i> الأخبار والفعاليات</a></li>
-          <li class="admin-menu-item"><a href="#messages" data-tab="messages"><i class="fas fa-envelope"></i> الرسائل الواردة</a></li>
-          <li class="admin-menu-item"><a href="#firebase" data-tab="firebase"><i class="fas fa-fire" style="color: #F59E0B;"></i> إعدادات Firebase</a></li>
+          <li class="admin-menu-item"><a href="#applications" class="active" data-tab="applications"><i
+                class="fas fa-file-signature"></i> طلبات التقديم</a></li>
+          <li class="admin-menu-item"><a href="#startups" data-tab="startups"><i class="fas fa-rocket"></i> المشروعات
+              المحتضنة</a></li>
+          <li class="admin-menu-item"><a href="#mentors" data-tab="mentors"><i class="fas fa-user-tie"></i> شبكة
+              الموجهين</a></li>
+          <li class="admin-menu-item"><a href="#news" data-tab="news"><i class="fas fa-newspaper"></i> الأخبار
+              والفعاليات</a></li>
+          <li class="admin-menu-item"><a href="#messages" data-tab="messages"><i class="fas fa-envelope"></i> الرسائل
+              الواردة</a></li>
+          <li class="admin-menu-item"><a href="#firebase" data-tab="firebase"><i class="fas fa-fire"
+                style="color: #F59E0B;"></i> إعدادات Firebase</a></li>
         </ul>
       </div>
 
@@ -70,7 +81,8 @@
         <a href="index.html" class="btn btn-secondary btn-sm" style="width: 100%;">
           <i class="fas fa-globe"></i> العودة للموقع
         </a>
-        <button id="logoutBtn" class="btn btn-outline-danger btn-sm" style="width: 100%; font-weight: 700; cursor: pointer;">
+        <button id="logoutBtn" class="btn btn-outline-danger btn-sm"
+          style="width: 100%; font-weight: 700; cursor: pointer;">
           <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
         </button>
         <div style="font-size: 0.75rem; text-align: center; color: #64748B;">
@@ -113,7 +125,8 @@
             <h4>طلبات قيد المراجعة</h4>
             <p id="pendingAppsCount" style="color: var(--warning);">0</p>
           </div>
-          <div class="admin-stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-clock"></i></div>
+          <div class="admin-stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i
+              class="fas fa-clock"></i></div>
         </div>
 
         <div class="admin-stat-card">
@@ -121,7 +134,8 @@
             <h4>المشروعات المقبولة</h4>
             <p id="approvedAppsCount" style="color: var(--accent);">0</p>
           </div>
-          <div class="admin-stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent);"><i class="fas fa-check-circle"></i></div>
+          <div class="admin-stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent);"><i
+              class="fas fa-check-circle"></i></div>
         </div>
 
         <div class="admin-stat-card">
@@ -129,7 +143,8 @@
             <h4>شركات محتضنة حالياً</h4>
             <p id="activeStartupsCount" style="color: var(--secondary);">0</p>
           </div>
-          <div class="admin-stat-icon" style="background: rgba(124, 58, 237, 0.1); color: var(--secondary);"><i class="fas fa-graduation-cap"></i></div>
+          <div class="admin-stat-icon" style="background: rgba(124, 58, 237, 0.1); color: var(--secondary);"><i
+              class="fas fa-graduation-cap"></i></div>
         </div>
       </div>
 
@@ -138,7 +153,8 @@
         <div class="admin-table-container">
           <div class="admin-table-header">
             <h3>قائمة طلبات التقديم المرفوعة عبر الموقع</h3>
-            <button class="btn btn-secondary btn-sm" id="exportCsvBtn"><i class="fas fa-download"></i> تصدير excel/csv</button>
+            <button class="btn btn-secondary btn-sm" id="exportCsvBtn"><i class="fas fa-download"></i> تصدير
+              excel/csv</button>
           </div>
           <table class="admin-table">
             <thead>
@@ -163,7 +179,8 @@
         <div class="admin-table-container">
           <div class="admin-table-header">
             <h3>إدارة دليل الشركات المحتضنة وخريجي رواق</h3>
-            <button class="btn btn-primary btn-sm" id="addStartupBtn"><i class="fas fa-plus"></i> إضافة شركة جديدة</button>
+            <button class="btn btn-primary btn-sm" id="addStartupBtn"><i class="fas fa-plus"></i> إضافة شركة
+              جديدة</button>
           </div>
           <table class="admin-table">
             <thead>
@@ -185,9 +202,11 @@
       <!-- Tab 3: Firebase Config Panel -->
       <div id="firebaseTab" class="tab-pane" style="display: none;">
         <div class="contact-card" style="max-width: 800px;">
-          <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fas fa-fire" style="color: #F59E0B;"></i> ربط قاعدة بيانات فايربيز (Firebase Firestore)</h3>
+          <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;"><i class="fas fa-fire"
+              style="color: #F59E0B;"></i> ربط قاعدة بيانات فايربيز (Firebase Firestore)</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-            يمكنك إدخال مفاتيح مشروعك في Firebase لتفعيل الحفظ والاسترجاع السحابي المباشر لقواعد البيانات والتنسيق التلقائي مع الموقع.
+            يمكنك إدخال مفاتيح مشروعك في Firebase لتفعيل الحفظ والاسترجاع السحابي المباشر لقواعد البيانات والتنسيق
+            التلقائي مع الموقع.
           </p>
 
           <form id="firebaseSettingsForm">
@@ -218,7 +237,8 @@
         <div class="admin-table-container">
           <div class="admin-table-header">
             <h3>إدارة شبكة الموجهين والخبراء</h3>
-            <button class="btn btn-primary btn-sm" id="addMentorBtn"><i class="fas fa-plus"></i> إضافة موجه جديد</button>
+            <button class="btn btn-primary btn-sm" id="addMentorBtn"><i class="fas fa-plus"></i> إضافة موجه
+              جديد</button>
           </div>
           <table class="admin-table">
             <thead>
@@ -342,7 +362,8 @@
         </div>
         <div class="form-group">
           <label class="form-label">السيرة الذاتية المختصرة *</label>
-          <textarea class="form-textarea" id="mBio" rows="3" placeholder="نبذة مختصرة عن الخبرات..." required></textarea>
+          <textarea class="form-textarea" id="mBio" rows="3" placeholder="نبذة مختصرة عن الخبرات..."
+            required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%;">إضافة وتحديث شبكة الموجهين</button>
       </form>
@@ -377,7 +398,8 @@
         </div>
         <div class="form-group">
           <label class="form-label">ملخص الخبر *</label>
-          <textarea class="form-textarea" id="nSummary" rows="3" placeholder="ملخص قصير يظهر في صفحة الأخبار..." required></textarea>
+          <textarea class="form-textarea" id="nSummary" rows="3" placeholder="ملخص قصير يظهر في صفحة الأخبار..."
+            required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%;">إضافة وتحديث الأخبار</button>
       </form>
@@ -387,4 +409,5 @@
   <script src="js/firebase-config.js"></script>
   <script src="js/admin.js"></script>
 </body>
+
 </html>
