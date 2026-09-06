@@ -251,7 +251,7 @@ header.scrolled {
 .nav-container {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 0.6rem 2rem;
+  padding: 0.35rem 2rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -274,9 +274,8 @@ header.scrolled {
 }
 
 .logo-img {
-  height: 88px;
+  height: 52px;
   width: auto;
-  max-width: 100px;
   object-fit: contain;
   border-radius: 0;
   box-shadow: none;
@@ -548,8 +547,8 @@ header.scrolled {
 
 .hero-stats-row {
   display: flex;
-  gap: 2.75rem;
-  padding-top: 1.5rem;
+  gap: 1.5rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
   width: 100%;
 }
@@ -557,24 +556,64 @@ header.scrolled {
 .stat-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 1.25rem 1rem;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.06);
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(99, 102, 241, 0.05), rgba(16, 185, 129, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(79, 70, 229, 0.12);
+  border-color: rgba(79, 70, 229, 0.15);
 }
 
 .stat-item h3 {
-  font-size: 2.35rem;
+  font-size: 2.2rem;
   font-weight: 900;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1;
-  margin-bottom: 0.45rem;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
   font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .stat-item p,
 .stat-item span {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-weight: 750;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 /* Hero 3D Visual Floating Elements */
@@ -2181,6 +2220,12 @@ footer {
 
   .hero-stats-row {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    min-width: 140px;
   }
 
   .pillars-grid,
@@ -2236,6 +2281,29 @@ footer {
 
   .page-banner-visual {
     display: none;
+  }
+
+  .hero-stats-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stat-item {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    text-align: right;
+    min-width: unset;
+  }
+
+  .stat-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  .stat-item p {
+    font-size: 0.8rem;
   }
 
   .hero-title {
