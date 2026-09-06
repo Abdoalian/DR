@@ -208,10 +208,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const updateCount = () => {
           count += speed;
           if (count < target) {
-            counter.innerText = Math.ceil(count);
+            counter.innerText = Math.ceil(count).toLocaleString('en-US');
             setTimeout(updateCount, 25);
           } else {
-            counter.innerText = target;
+            counter.innerText = target.toLocaleString('en-US');
           }
         };
         updateCount();
