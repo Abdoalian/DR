@@ -261,7 +261,7 @@ header.scrolled {
 .logo-group {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 1.1rem;
   text-decoration: none;
   transition: transform 0.3s ease;
   flex-shrink: 0;
@@ -273,9 +273,9 @@ header.scrolled {
 }
 
 .logo-img {
-  height: 75px;
+  height: 88px;
   width: auto;
-  max-width: 85px;
+  max-width: 100px;
   object-fit: contain;
   border-radius: 0;
   box-shadow: none;
@@ -297,7 +297,7 @@ header.scrolled {
 }
 
 .logo-text h1 {
-  font-size: 1.45rem;
+  font-size: 1.6rem;
   font-weight: 900;
   color: var(--text-main);
   line-height: 1.2;
@@ -306,7 +306,7 @@ header.scrolled {
 }
 
 .logo-text span {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   font-weight: 700;
   white-space: nowrap;
