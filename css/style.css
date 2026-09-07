@@ -1333,13 +1333,35 @@ header.scrolled {
   transform: scale(1.1);
 }
 
+.startup-tags-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
 .startup-tag {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  padding: 0.35rem 0.95rem;
+  padding: 0.3rem 0.85rem;
   border-radius: var(--radius-full);
   background: rgba(79, 70, 229, 0.1);
   color: var(--primary);
+  white-space: nowrap;
+}
+
+.startup-cycle-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
 }
 
 .startup-body {
@@ -1350,20 +1372,21 @@ header.scrolled {
 }
 
 .startup-name {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 850;
   margin-bottom: 0.75rem;
   color: var(--text-main);
+  line-height: 1.4;
 }
 
 .startup-desc {
-  font-size: 0.92rem;
+  font-size: 0.91rem;
   color: var(--text-muted);
   line-height: 1.65;
   margin-bottom: 1.25rem;
-  min-height: 4.6rem;
+  min-height: 5.5rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -108,119 +108,281 @@
     </div>
 
     <div class="startup-filters">
-      <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all"></i> الكل</button>
-      <button class="filter-btn" data-filter="ai"><i class="fas fa-microchip"></i> الذكاء الاصطناعي والبرمجيات</button>
+      <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all"></i> الكل (14)</button>
+      <button class="filter-btn" data-filter="cycle-2"><i class="fas fa-rocket"></i> دورة الاحتضان الثانية (2023)</button>
+      <button class="filter-btn" data-filter="cycle-1"><i class="fas fa-award"></i> دورة الاحتضان الأولى (2022)</button>
+      <button class="filter-btn" data-filter="cycle-prev"><i class="fas fa-history"></i> دفعات 2019 - 2021</button>
+      <button class="filter-btn" data-filter="agri"><i class="fas fa-seedling"></i> الزراعة والبيئة</button>
       <button class="filter-btn" data-filter="health"><i class="fas fa-heart-pulse"></i> التكنولوجيا الطبية</button>
-      <button class="filter-btn" data-filter="agri"><i class="fas fa-seedling"></i> الزراعة والتكنولوجيا البيئية</button>
-      <button class="filter-btn" data-filter="cairo"><i class="fas fa-city"></i> حاضنة القاهرة</button>
-      <button class="filter-btn" data-filter="assiut"><i class="fas fa-location-dot"></i> حاضنة أسيوط</button>
-      <button class="filter-btn" data-filter="qena"><i class="fas fa-leaf"></i> حاضنة قنا</button>
-      <button class="filter-btn" data-filter="nano"><i class="fas fa-atom"></i> حاضنة النانو</button>
-      <button class="filter-btn" data-filter="medical"><i class="fas fa-stethoscope"></i> حاضنة الطبية</button>
+      <button class="filter-btn" data-filter="greentech"><i class="fas fa-recycle"></i> التدوير والتكنولوجيا الخضراء</button>
+      <button class="filter-btn" data-filter="ai"><i class="fas fa-brain"></i> الذكاء الاصطناعي والتعليم</button>
     </div>
 
     <div class="startups-grid" id="startupsContainer">
-      <!-- Startup Card 1 -->
-      <div class="startup-card" data-category="ai">
+      <!-- 1. AlProtein -->
+      <div class="startup-card reveal-on-scroll hover-lift" data-category="ai" data-cycle="cycle-2">
         <div class="startup-header">
-          <div class="startup-logo"><i class="fas fa-brain"></i></div>
-          <span class="startup-tag">الذكاء الاصطناعي</span>
+          <div class="startup-logo" style="color: #4F46E5;"><i class="fas fa-dna"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(79, 70, 229, 0.1); color: #4F46E5;">الذكاء الاصطناعي والبيوتكنولوجي</span>
+            <span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> دورة الاحتضان الثانية</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">نظام دراية AI</h3>
-          <p class="startup-desc">منصة ذكاء اصطناعي لتحليل البيانات الزراعية والتنبؤ بآفات المحاصيل قبل حدوثها باستخدام
-            المعالجة الطيفية.</p>
+          <h3 class="startup-name">ال برو للتكنولوجيا الحيوية - AlProtein</h3>
+          <p class="startup-desc" title="تنتج شركة البروتين مسحوق بروتين ذو مذاق محايد وقيمة غذائية عالية وبأسعار معقولة وصديقة للبيئة باستخدام مصادر عضوية عن طريق منصة إنتاج متكاملة محسنة بالذكاء الاصطناعي من الطحالب الدقيقة والنباتات العائمة.">تنتج شركة البروتين مسحوق بروتين ذو مذاق محايد وقيمة غذائية عالية وبأسعار معقولة وصديقة للبيئة باستخدام مصادر عضوية عن طريق منصة إنتاج متكاملة محسنة بالذكاء الاصطناعي من الطحالب الدقيقة والنباتات العائمة.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-user-graduate"></i> كلية الهندسة</span>
-            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2025</span>
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2023</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary);"></i> تحت الاحتضان</span>
           </div>
         </div>
       </div>
 
-      <!-- Startup Card 2 -->
-      <div class="startup-card" data-category="health">
+      <!-- 2. MAWJ -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-100" data-category="greentech" data-cycle="cycle-2">
         <div class="startup-header">
-          <div class="startup-logo" style="color: #EC4899;"><i class="fas fa-heart-pulse"></i></div>
-          <span class="startup-tag" style="background: rgba(236,72,153,0.1); color: #EC4899;">التكنولوجيا الطبية</span>
+          <div class="startup-logo" style="color: #059669;"><i class="fas fa-tree"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(5, 150, 105, 0.1); color: #059669;">التكنولوجيا الخضراء</span>
+            <span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> دورة الاحتضان الثانية</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">سند للرعاية الصحية</h3>
-          <p class="startup-desc">جهاز محمول مدمج بتطبيق ذكي لإدارة ومتابعة المؤشرات الحيوية لمرضى الحالات الحرجة عن
-            بُعد.</p>
+          <h3 class="startup-name">ام ايه دابليو جى للتجارة - MAWJ</h3>
+          <p class="startup-desc" title="مشروع بيئي وصناعي مبتكر لتحويل جريد ومخلفات النخيل إلى مناديل ومنتجات ورقية صديقة للبيئة وبديلة للمنتجات الورقية التقليدية.">مشروع بيئي وصناعي مبتكر لتحويل جريد ومخلفات النخيل إلى مناديل ومنتجات ورقية صديقة للبيئة وبديلة للمنتجات الورقية التقليدية.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-user-md"></i> كلية الطب</span>
-            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2023</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary);"></i> تحت الاحتضان</span>
           </div>
         </div>
       </div>
 
-      <!-- Startup Card 3 -->
-      <div class="startup-card" data-category="agri">
+      <!-- 3. Vermi King -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-200" data-category="agri" data-cycle="cycle-2">
         <div class="startup-header">
           <div class="startup-logo" style="color: #10B981;"><i class="fas fa-seedling"></i></div>
-          <span class="startup-tag" style="background: rgba(16,185,129,0.1); color: #10B981;">الزراعة الذكية</span>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(16, 185, 129, 0.1); color: #10B981;">الأسمدة والتدوير الحيوي</span>
+            <span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> دورة الاحتضان الثانية</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">أكوا فارم AquaFarm</h3>
-          <p class="startup-desc">أنظمة هيدروبونيكس مدمجة بأجهزة مستشعرات إنترنت الأشياء لرفع كفاءة استهلاك المياه بنسبة
-            80%.</p>
+          <h3 class="startup-name">فيرمي كينج - Vermi King</h3>
+          <p class="startup-desc" title="إنتاج منتجات أسمدة عضوية حيوية (الفيرميكومبوست) وبروتينات أعلاف من تدوير المخلفات العضوية بطرق بيولوجية آمنة بيئياً.">إنتاج منتجات أسمدة عضوية حيوية (الفيرميكومبوست) وبروتينات أعلاف من تدوير المخلفات العضوية بطرق بيولوجية آمنة بيئياً.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-leaf"></i> كلية الزراعة</span>
-            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2024</span>
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2023</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary);"></i> تحت الاحتضان</span>
           </div>
         </div>
       </div>
 
-      <!-- Startup Card 4 -->
-      <div class="startup-card" data-category="fintech">
+      <!-- 4. Eco-Shell -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-300" data-category="greentech" data-cycle="cycle-2">
         <div class="startup-header">
-          <div class="startup-logo" style="color: #F59E0B;"><i class="fas fa-coins"></i></div>
-          <span class="startup-tag" style="background: rgba(245,158,11,0.1); color: #F59E0B;">التكنولوجيا المالية</span>
+          <div class="startup-logo" style="color: #EA580C;"><i class="fas fa-recycle"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(234, 88, 12, 0.1); color: #EA580C;">الكيمياء الخضراء والتدوير</span>
+            <span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> دورة الاحتضان الثانية</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">محفظة تيسير Pay</h3>
-          <p class="startup-desc">حلول مدفوعات رقمية متوافقة مع الشريعة الإسلامية وموجهة للتجار والمشاريع الصغرى
-            والمتناهية الصغر.</p>
+          <h3 class="startup-name">إيكوشيل - Eco-Shell</h3>
+          <p class="startup-desc" title="شركة ناشئة مبتكرة تعمل من خلال إعادة تدوير مخلفات قشر البيض وتعظيم الاستفادة من الثروة المهدرة وإعادة هيكلة هذه النفايات من خلال إنتاج منتجات كيميائية منها.">شركة ناشئة مبتكرة تعمل من خلال إعادة تدوير مخلفات قشر البيض وتعظيم الاستفادة من الثروة المهدرة وإعادة هيكلة هذه النفايات من خلال إنتاج منتجات كيميائية منها.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-calculator"></i> كلية التجارة</span>
-            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2023</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary);"></i> تحت الاحتضان</span>
           </div>
         </div>
       </div>
 
-      <!-- Startup Card 5 -->
-      <div class="startup-card" data-category="ai">
+      <!-- 5. ENTOMO AGRO -->
+      <div class="startup-card reveal-on-scroll hover-lift" data-category="agri" data-cycle="cycle-2">
         <div class="startup-header">
-          <div class="startup-logo" style="color: #3B82F6;"><i class="fas fa-robot"></i></div>
-          <span class="startup-tag" style="background: rgba(59,130,246,0.1); color: #3B82F6;">الذكاء الاصطناعي</span>
+          <div class="startup-logo" style="color: #84CC16;"><i class="fas fa-bug"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(132, 204, 22, 0.1); color: #84CC16;">التكنولوجيا الحيوية الزراعية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> دورة الاحتضان الثانية</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">روبوتكس للحلول الصناعية</h3>
-          <p class="startup-desc">تصميم أذرع روبوتية ذكية مدعومة بالرؤية الحاسوبية لفرز المنتجات وتجميعها في خطوط
-            الإنتاج.</p>
+          <h3 class="startup-name">إينتومو أجرو - ENTOMO AGRO</h3>
+          <p class="startup-desc" title="تدوير المخلفات باستخدام الحشرات واستغلالها في إنتاج مخصبات حيوية ولقاحات ميكروبية للحد من استخدام الأسمدة الكيماوية وتلوث البيئة واستخدامها في المعالجة الحيوية للمبيدات الكيماوية.">تدوير المخلفات باستخدام الحشرات واستغلالها في إنتاج مخصبات حيوية ولقاحات ميكروبية للحد من استخدام الأسمدة الكيماوية وتلوث البيئة واستخدامها في المعالجة الحيوية للمبيدات الكيماوية.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-microchip"></i> كلية الهندسة</span>
-            <span><i class="fas fa-seedling" style="color: var(--primary)"></i> تحت الاحتضان</span>
+            <span><i class="fas fa-calendar-alt"></i> التسجيل: قيد الإجراء</span>
+            <span><i class="fas fa-seedling" style="color: var(--primary);"></i> قيد الاحتضان والتأسيس</span>
           </div>
         </div>
       </div>
 
-      <!-- Startup Card 6 -->
-      <div class="startup-card" data-category="agri">
+      <!-- 6. Opuntia -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-100" data-category="health" data-cycle="cycle-1">
         <div class="startup-header">
-          <div class="startup-logo" style="color: #8B5CF6;"><i class="fas fa-solar-panel"></i></div>
-          <span class="startup-tag" style="background: rgba(139,92,246,0.1); color: #8B5CF6;">طاقة ونظافة بيئية</span>
+          <div class="startup-logo" style="color: #EC4899;"><i class="fas fa-spa"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(236, 72, 153, 0.1); color: #EC4899;">المستحضرات الطبية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-award"></i> دورة الاحتضان الأولى</span>
+          </div>
         </div>
         <div class="startup-body">
-          <h3 class="startup-name">شمس للطاقة النظيفة</h3>
-          <p class="startup-desc">تطوير مضخات مياه شمسية ذكية تعمل بنظام التبريد الذاتي وتزيد من كفاءة توليد الكهرباء في
-            الصعيد.</p>
+          <h3 class="startup-name">أبونشيا - Opuntia</h3>
+          <p class="startup-desc" title="إنتاج مستحضرات تجميل طبية من المخلفات النباتية غير المستخدمة من نبات صبار التين الشوكي، حيث يتم تحضير جميع المنتجات باستخدام المستخلصات النباتية الغنية بمضادات سرطان الجلد الفعالة والمواد المضادة للالتهابات الجلدية.">إنتاج مستحضرات تجميل طبية من المخلفات النباتية غير المستخدمة من نبات صبار التين الشوكي، بمستخلصات غنية بمضادات سرطان الجلد الفعالة والمواد المضادة للالتهابات مما يحقق الصحة والجمال معاً.</p>
           <div class="startup-meta">
-            <span><i class="fas fa-atom"></i> كلية العلوم</span>
-            <span><i class="fas fa-check-circle" style="color: var(--accent)"></i> متخرج 2025</span>
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2022</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج متميز</span>
           </div>
         </div>
       </div>
+
+      <!-- 7. CTM -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-200" data-category="agri" data-cycle="cycle-1">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #2563EB;"><i class="fas fa-tractor"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(37, 99, 235, 0.1); color: #2563EB;">الآلات الزراعية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-award"></i> دورة الاحتضان الأولى</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">سى تى إم لتصنيع الالآت الزراعية - CTM</h3>
+          <p class="startup-desc" title="تعمل الشركة علي تطوير آلة حصاد لتصبح متعددة الاغراض في الحيازات الزراعية والمزارع الصغيرة، حيث تصلح الالة لحصاد الحبوب وايضا لتقليب وصناعة الكمبوست بتكاليف اقتصادية.">تعمل الشركة علي تطوير آلة حصاد لتصبح متعددة الأغراض في الحيازات الزراعية والمزارع الصغيرة، حيث تصلح لحصاد الحبوب وأيضاً لتقليب وصناعة الكمبوست بتكاليف اقتصادية منافسة.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2022</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج متميز</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. AMS-Online -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-300" data-category="agri" data-cycle="cycle-1">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #0D9488;"><i class="fas fa-store"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(13, 148, 136, 0.1); color: #0D9488;">المنصات والهندسة الزراعية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-award"></i> دورة الاحتضان الأولى</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">السوق الميكانيكى الزراعى - AMS-Online</h3>
+          <p class="startup-desc" title="منصّة إلكترونية تعمل على ربط منتجي مستلزمات الزراعة والغذاء بالمستهلكين وتوصيلها، وتقديم خدمات واستشارات زراعية ونظم حيوية، وتصميم وبيع قطع غيار الآلات وأنظمة الزراعة الذكية.">منصّة إلكترونية تعمل على ربط منتجي مستلزمات الزراعة والغذاء بالمستهلكين وتوصيلها، وتقديم خدمات واستشارات زراعية ونظم حيوية، وتصميم وبيع قطع غيار الآلات والزراعة الذكية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2022</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج متميز</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. VRESCO -->
+      <div class="startup-card reveal-on-scroll hover-lift" data-category="health" data-cycle="cycle-1">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #16A34A;"><i class="fas fa-capsules"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(22, 163, 74, 0.1); color: #16A34A;">الأغذية الصحية والبيوتك</span>
+            <span class="startup-cycle-badge"><i class="fas fa-award"></i> دورة الاحتضان الأولى</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">فيريسكو - VRESCO</h3>
+          <p class="startup-desc" title="إنتاج المكملات أو البدائل الغذائية الصحية المستخلصة من طحلب الأسبيرولينا ليكون محتوى متكامل من العناصر الغذائية اليومية في صورة منتجات متنوعة وصحية مناسبة لمختلف الاحتياجات.">إنتاج المكملات أو البدائل الغذائية الصحية المستخلصة من طحلب "الأسبيرولينا" لتوفير محتوى متكامل من العناصر الغذائية اليومية للإنسان في صورة منتجات صحية متنوعة.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2022</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج متميز</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Mezna -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-100" data-category="agri" data-cycle="cycle-prev">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #10B981;"><i class="fas fa-seedling"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(16, 185, 129, 0.1); color: #10B981;">الأسمدة العضوية الحيوية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-history"></i> دفعة 2019</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">مزنة</h3>
+          <p class="startup-desc" title="انتاج الاسمدة العضوية الحيوية عالية الجودة ومنخفضة التكلفة من مخلفات المواد الزراعية عن طريق تدويرها بتصنيع عدة منتجات غير تقليدية مثل السماد العضوي السائل وتغذية النباتات بالعناصر الكيميائية عبر ثلاث مراحل نمو.">إنتاج الأسمدة العضوية الحيوية عالية الجودة ومنخفضة التكلفة من مخلفات المواد الزراعية بتدويرها وتصنيع منتجات مثل السماد العضوي السائل لتغذية النباتات بالعناصر المطلوبة عبر ثلاث مراحل نمو.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2019</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. EgyCodey -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-200" data-category="ai" data-cycle="cycle-prev">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #4F46E5;"><i class="fas fa-laptop-code"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(79, 70, 229, 0.1); color: #4F46E5;">تكنولوجيا التعليم والبرمجة</span>
+            <span class="startup-cycle-badge"><i class="fas fa-history"></i> دفعة 2019</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">ايجى كودى - EgyCodey</h3>
+          <p class="startup-desc" title="منصة تعليمية مبتكرة لتعليم الأطفال البرمجة واستخدام التكنولوجيا في التعليم باستخدام التعليم المقلوب والمحفزات التعليمية التفاعلية.">منصة تعليمية مبتكرة لتعليم الأطفال البرمجة وتطبيقات التكنولوجيا في التعليم باستخدام أسلوب التعليم المقلوب والمحفزات التعليمية والأنشطة التفاعلية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2019</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Nabata 2 -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-300" data-category="crafts" data-cycle="cycle-prev">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #D97706;"><i class="fas fa-palette"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(217, 119, 6, 0.1); color: #D97706;">الحرف والتراث وتدوير المخلفات</span>
+            <span class="startup-cycle-badge"><i class="fas fa-history"></i> دفعة 2019</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">نباتا 2 - Nabata 2</h3>
+          <p class="startup-desc" title="تصميم وتنفيذ وتصنيع المنتجات اليدوية عالية الجودة وتسويقها محلياً ودولياً للحفاظ على الهوية النوبية من خلال ابراز ألوان النوبة الشهيرة في منتجات معظمها من مخلفات ومكونات النخيل والموز.">تصميم وتنفيذ وتصنيع المنتجات اليدوية عالية الجودة وتسويقها داخلياً وخارجياً للحفاظ على الهوية النوبية وإبراز ألوانها المبهجة، بالاعتماد على تدوير مخلفات ومكونات النخيل والموز.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2019</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. SERKET -->
+      <div class="startup-card reveal-on-scroll hover-lift" data-category="health" data-cycle="cycle-prev">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #EC4899;"><i class="fas fa-flask-vial"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(236, 72, 153, 0.1); color: #EC4899;">التكنولوجيا الطبية الحيوية</span>
+            <span class="startup-cycle-badge"><i class="fas fa-history"></i> دفعة 2021</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">SERKET - سيركت</h3>
+          <p class="startup-desc" title="تربية العقارب في كبائن مخصصة واستخراج سم العقرب بطريقة علمية جديدة لأكثر من ثلاث مرات لتوريده لشركات الأدوية لصنع ترياق لدغات العقارب والمسكنات الطبية غير المسببة للإدمان.">تربية وتكاثر العقارب في كبائن مخصصة واستخراج سم العقرب بطريقة علمية جديدة لأكثر من 3 مرات لإنتاج وتوريد السموم الخام لشركات الأدوية لتصنيع أمصال اللدغات ومسكنات الألم غير الإدمانية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2021</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج 2021</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. ELAPH -->
+      <div class="startup-card reveal-on-scroll hover-lift delay-100" data-category="greentech" data-cycle="cycle-prev">
+        <div class="startup-header">
+          <div class="startup-logo" style="color: #059669;"><i class="fas fa-filter"></i></div>
+          <div class="startup-tags-group">
+            <span class="startup-tag" style="background: rgba(5, 150, 105, 0.1); color: #059669;">التكنولوجيا البيئية والتعدين</span>
+            <span class="startup-cycle-badge"><i class="fas fa-history"></i> دفعة 2021</span>
+          </div>
+        </div>
+        <div class="startup-body">
+          <h3 class="startup-name">ELAPH - إيلاف</h3>
+          <p class="startup-desc" title="الاستفادة من خام الكاولين المصري لإنتاج الزيوليت الاقتصادي لإزالة غاز الأمونيا بمزارع الدواجن وتقليل النفوق وإلغاء الحاجة لمراوح باهظة، وإعادة تدوير مواد الفلتر كمخصبات زراعية نيتروجينية حيوية.">الاستفادة من خام الكاولين لإنتاج فلاتر الزيوليت الاقتصادية لإزالة غاز الأمونيا بمزارع الدواجن وتقليل النفوق، وإعادة تدوير مواد الفلتر المشبعة كأسمدة ومخصبات نيتروجينية حيوية فائقة الفعالية.</p>
+          <div class="startup-meta">
+            <span><i class="fas fa-calendar-alt"></i> تسجيل: 2021</span>
+            <span><i class="fas fa-check-circle" style="color: var(--accent);"></i> خريج 2021</span>
+          </div>
+        </div>
     </div>
   </section>
 
