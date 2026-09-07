@@ -187,7 +187,7 @@
               <tr>
                 <th>اسم الشركة</th>
                 <th>القطاع والتخصص</th>
-                <th>الكلية</th>
+                <th>دورة الاحتضان / السنة</th>
                 <th>حالة الاحتضان</th>
                 <th>الإجراءات</th>
               </tr>
@@ -318,16 +318,33 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">القطاع *</label>
+            <label class="form-label">القطاع والتخصص *</label>
             <select class="form-select" id="stCategory" required>
-              <option value="ai">الذكاء الاصطناعي</option>
-              <option value="health">التكنولوجيا الطبية</option>
-              <option value="agri">الزراعة الذكية</option>
+              <option value="agri">الزراعة والتكنولوجيا البيئية</option>
+              <option value="health">التكنولوجيا الطبية والصحية</option>
+              <option value="greentech">التدوير والتكنولوجيا الخضراء</option>
+              <option value="ai">الذكاء الاصطناعي وتكنولوجيا التعليم</option>
+              <option value="crafts">الحرف والتراث وتدوير المخلفات</option>
               <option value="fintech">التكنولوجيا المالية</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">الكلية / الجامعة *</label>
+            <label class="form-label">دورة الاحتضان *</label>
+            <select class="form-select" id="stCycle" required>
+              <option value="دورة الاحتضان الثانية">دورة الاحتضان الثانية (2023)</option>
+              <option value="دورة الاحتضان الأولى">دورة الاحتضان الأولى (2022)</option>
+              <option value="دفعات 2019 - 2021">دفعات 2019 - 2021</option>
+              <option value="أخرى">أخرى</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">سنة التسجيل *</label>
+            <input type="text" class="form-input" id="stYear" placeholder="مثال: 2023 أو قيد الإجراء" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الكلية / الجهة *</label>
             <input type="text" class="form-input" id="stCollege" placeholder="مثال: هندسة الأزهر" required>
           </div>
         </div>

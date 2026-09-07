@@ -230,11 +230,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     tbody.innerHTML = startups.map(st => {
+      const cycleInfo = st.cycle ? `${st.cycle} (${st.year || 'غير محدد'})` : (st.college || '-');
       return `
         <tr>
           <td><strong>${st.name}</strong></td>
-          <td>${st.categoryTitle || st.category}</td>
-          <td>${st.college}</td>
+          <td><span class="status-badge" style="background: rgba(79, 70, 229, 0.1); color: var(--primary); font-weight: 700;">${st.categoryTitle || st.category}</span></td>
+          <td>${cycleInfo}</td>
           <td><span class="status-badge status-approved">${st.status || 'تحت الاحتضان'}</span></td>
           <td>
             <button class="btn btn-outline-danger btn-sm delete-st-btn" data-id="${st.id}"><i class="fas fa-trash"></i> حذف</button>
@@ -277,20 +278,33 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const name = document.getElementById('stName').value;
       const category = document.getElementById('stCategory').value;
+      const cycle = document.getElementById('stCycle') ? document.getElementById('stCycle').value : 'دورة الاحتضان الثانية';
+      const year = document.getElementById('stYear') ? document.getElementById('stYear').value : '2023';
       const college = document.getElementById('stCollege').value;
       const desc = document.getElementById('stDesc').value;
 
       const categoryTitles = {
-        ai: 'الذكاء الاصطناعي',
-        health: 'التكنولوجيا الطبية',
-        agri: 'الزراعة الذكية',
+        ai: 'الذكاء الاصطناعي وتكنولوجيا التعليم',
+        health: 'التكنولوجيا الطبية والصحية',
+        agri: 'الزراعة والتكنولوجيا البيئية',
+        greentech: 'التدوير والتكنولوجيا الخضراء',
+        crafts: 'الحرف والتراث وتدوير المخلفات',
         fintech: 'التكنولوجيا المالية'
+      };
+
+      const cycleFilters = {
+        'دورة الاحتضان الثانية': 'cycle-2',
+        'دورة الاحتضان الأولى': 'cycle-1',
+        'دفعات 2019 - 2021': 'cycle-prev'
       };
 
       await window.RwaqDB.addStartup({
         name,
         category,
         categoryTitle: categoryTitles[category] || category,
+        cycle,
+        cycleFilter: cycleFilters[cycle] || 'cycle-2',
+        year,
         college,
         desc,
         status: 'تحت الاحتضان'
