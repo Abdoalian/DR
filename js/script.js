@@ -249,6 +249,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         return { icon: 'fas fa-heart-pulse', color: '#EC4899', bg: 'rgba(236, 72, 153, 0.1)' };
       case 'agri':
         return { icon: 'fas fa-seedling', color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)' };
+      case 'greentech':
+        return { icon: 'fas fa-recycle', color: '#059669', bg: 'rgba(5, 150, 105, 0.1)' };
+      case 'crafts':
+        return { icon: 'fas fa-palette', color: '#D97706', bg: 'rgba(217, 119, 6, 0.1)' };
       case 'fintech':
         return { icon: 'fas fa-coins', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)' };
       default:
@@ -270,23 +274,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const createCardHtml = (st, index) => {
       const details = getCategoryDetails(st.category);
-      const isGraduated = st.status.includes('تخرج') || st.status.includes('خريج') || st.status.includes('متخرج');
+      const isGraduated = st.status && (st.status.includes('تخرج') || st.status.includes('خريج') || st.status.includes('متخرج'));
       const statusIcon = isGraduated ? 'fa-check-circle' : 'fa-seedling';
       const statusColor = isGraduated ? 'var(--accent)' : 'var(--primary)';
       const delayClass = `delay-${((index % 4) + 1) * 100}`;
+      const cycleBadge = st.cycle ? `<span class="startup-cycle-badge"><i class="fas fa-layer-group"></i> ${st.cycle}</span>` : '';
+      const yearText = st.year ? (st.year === 'لم يتم بعد' ? 'التسجيل: قيد الإجراء' : `تسجيل: ${st.year}`) : '';
 
       return `
-        <div class="startup-card reveal-on-scroll hover-lift ${delayClass}" data-category="${st.category}">
+        <div class="startup-card reveal-on-scroll hover-lift ${delayClass}" data-category="${st.category}" data-cycle="${st.cycleFilter || ''}">
           <div class="startup-header">
-            <div class="startup-logo" style="color: ${details.color};"><i class="${details.icon}"></i></div>
-            <span class="startup-tag" style="background: ${details.bg}; color: ${details.color};">${st.categoryTitle || st.category}</span>
+            <div class="startup-logo" style="color: ${details.color};"><i class="${st.icon || details.icon}"></i></div>
+            <div class="startup-tags-group">
+              <span class="startup-tag" style="background: ${details.bg}; color: ${details.color};">${st.categoryTitle || st.category}</span>
+              ${cycleBadge}
+            </div>
           </div>
           <div class="startup-body">
             <h3 class="startup-name">${st.name}</h3>
-            <p class="startup-desc">${st.desc}</p>
+            <p class="startup-desc" title="${st.desc}">${st.desc}</p>
             <div class="startup-meta">
-              <span><i class="fas fa-user-graduate"></i> ${st.college}</span>
-              <span><i class="fas ${statusIcon}" style="color: ${statusColor};"></i> ${st.status}</span>
+              <span><i class="fas fa-calendar-alt"></i> ${yearText}</span>
+              <span><i class="fas ${statusIcon}" style="color: ${statusColor};"></i> ${st.status || 'تحت الاحتضان'}</span>
             </div>
           </div>
         </div>
@@ -298,7 +307,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (homepageStartupsGrid && startups.length > 0) {
-      const topStartups = startups.slice(0, 3);
+      const featuredIds = ['st-opuntia', 'st-alprotein', 'st-vermiking'];
+      let topStartups = startups.filter(s => featuredIds.includes(s.id));
+      if (topStartups.length < 3) topStartups = startups.slice(0, 3);
       homepageStartupsGrid.innerHTML = topStartups.map((st, idx) => createCardHtml(st, idx)).join('');
     }
 
@@ -313,8 +324,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const cards = document.querySelectorAll('.startup-card');
 
         cards.forEach(card => {
-          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-            card.style.display = 'block';
+          const cardCat = card.getAttribute('data-category');
+          const cardCycle = card.getAttribute('data-cycle');
+          if (filterValue === 'all' || cardCat === filterValue || cardCycle === filterValue) {
+            card.style.display = 'flex';
           } else {
             card.style.display = 'none';
           }
@@ -332,7 +345,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         cards.forEach(card => {
           const text = card.textContent.toLowerCase();
           if (text.includes(searchTerm)) {
-            card.style.display = 'block';
+            card.style.display = 'flex';
           } else {
             card.style.display = 'none';
           }

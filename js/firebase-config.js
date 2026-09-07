@@ -132,17 +132,227 @@ window.RwaqDB = {
     if (isFirebaseActive && db) {
       try {
         const snapshot = await db.collection("startups").get();
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        if (!snapshot.empty) {
+          return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        }
       } catch (e) {
         console.error(e);
       }
     }
-    const local = localStorage.getItem('rwaq_startups');
-    return local ? JSON.parse(local) : [
-      { id: 's-1', name: 'نظام دراية AI', category: 'ai', categoryTitle: 'الذكاء الاصطناعي', desc: 'منصة ذكاء اصطناعي لتحليل البيانات الزراعية والتنبؤ بآفات المحاصيل.', college: 'كلية الهندسة', status: 'تم التخرج 2025' },
-      { id: 's-2', name: 'سند للرعاية الصحية', category: 'health', categoryTitle: 'التكنولوجيا الطبية', desc: 'جهاز محمول مدمج بتطبيق ذكي لإدارة ومتابعة المؤشرات الحيوية.', college: 'كلية الطب', status: 'تحت الاحتضان' },
-      { id: 's-3', name: 'أكوا فارم AquaFarm', category: 'agri', categoryTitle: 'الزراعة الذكية', desc: 'أنظمة هيدروبونيكس مدمجة بأجهزة مستشعرات إنترنت الأشياء.', college: 'كلية الزراعة', status: 'تم التخرج 2024' }
+    const local = localStorage.getItem('rwaq_startups_v3');
+    if (local) {
+      try {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length >= 14) {
+          return parsed;
+        }
+      } catch(e) {}
+    }
+    const defaultStartups = [
+      // دورة الاحتضان الثانية (2023)
+      {
+        id: 'st-alprotein',
+        name: 'ال برو للتكنولوجيا الحيوية - AlProtein',
+        category: 'ai',
+        categoryTitle: 'الذكاء الاصطناعي والتكنولوجيا الحيوية',
+        cycle: 'دورة الاحتضان الثانية',
+        cycleFilter: 'cycle-2',
+        year: '2023',
+        regNo: 'غير محدد',
+        college: 'التكنولوجيا الحيوية والذكاء الاصطناعي',
+        status: 'تحت الاحتضان',
+        icon: 'fas fa-dna',
+        desc: 'تنتج شركة البروتين مسحوق بروتين ذو مذاق محايد وقيمة غذائية عالية وبأسعار معقولة وصديقة للبيئة باستخدام مصادر عضوية عن طريق منصة إنتاج متكاملة محسنة بالذكاء الاصطناعي من الطحالب الدقيقة والنباتات العائمة.'
+      },
+      {
+        id: 'st-mawj',
+        name: 'ام ايه دابليو جى للتجارة - MAWJ',
+        category: 'greentech',
+        categoryTitle: 'التكنولوجيا الخضراء والتدوير',
+        cycle: 'دورة الاحتضان الثانية',
+        cycleFilter: 'cycle-2',
+        year: '2023',
+        regNo: 'غير محدد',
+        college: 'الصناعات التحويلية والبيئة',
+        status: 'تحت الاحتضان',
+        icon: 'fas fa-tree',
+        desc: 'مشروع بيئي وصناعي مبتكر لتحويل جريد ومخلفات النخيل إلى مناديل ومنتجات ورقية صديقة للبيئة وبديلة للمنتجات الورقية التقليدية.'
+      },
+      {
+        id: 'st-vermiking',
+        name: 'فيرمي كينج - Vermi King',
+        category: 'agri',
+        categoryTitle: 'الأسمدة والتدوير الحيوي',
+        cycle: 'دورة الاحتضان الثانية',
+        cycleFilter: 'cycle-2',
+        year: '2023',
+        regNo: 'غير محدد',
+        college: 'الزراعة والتدوير العضوي',
+        status: 'تحت الاحتضان',
+        icon: 'fas fa-seedling',
+        desc: 'إنتاج منتجات أسمدة عضوية حيوية (الفيرميكومبوست) وبروتينات أعلاف عالية الجودة من خلال إعادة تدوير المخلفات العضوية بطرق بيولوجية آمنة بيئياً.'
+      },
+      {
+        id: 'st-ecoshell',
+        name: 'إيكوشيل - Eco-Shell',
+        category: 'greentech',
+        categoryTitle: 'الكيمياء الخضراء والتدوير',
+        cycle: 'دورة الاحتضان الثانية',
+        cycleFilter: 'cycle-2',
+        year: '2023',
+        regNo: 'غير محدد',
+        college: 'العلوم والكيمياء التطبيقية',
+        status: 'تحت الاحتضان',
+        icon: 'fas fa-recycle',
+        desc: 'شركة ناشئة مبتكرة تعمل على إعادة تدوير مخلفات قشر البيض وتعظيم الاستفادة من الثروة المهدرة وإعادة هيكلة هذه النفايات بإنتاج مركبات ومنتجات كيميائية وصناعية عالية القيمة.'
+      },
+      {
+        id: 'st-entomo',
+        name: 'إينتومو أجرو - ENTOMO AGRO',
+        category: 'agri',
+        categoryTitle: 'التكنولوجيا الحيوية الزراعية',
+        cycle: 'دورة الاحتضان الثانية',
+        cycleFilter: 'cycle-2',
+        year: 'لم يتم بعد',
+        regNo: 'غير محدد',
+        college: 'الزراعة والمعالجة الحيوية',
+        status: 'قيد التأسيس والاحتضان',
+        icon: 'fas fa-bug',
+        desc: 'تدوير المخلفات العضوية باستخدام الحشرات واستغلالها في إنتاج مخصبات حيوية ولقاحات ميكروبية للحد من الأسمدة الكيماوية وتلوث البيئة، واستخدامها في المعالجة الحيوية للمبيدات الكيماوية.'
+      },
+
+      // دورة الاحتضان الأولى (2022)
+      {
+        id: 'st-opuntia',
+        name: 'أبونشيا - Opuntia',
+        category: 'health',
+        categoryTitle: 'المستحضرات الطبية والتجميلية',
+        cycle: 'دورة الاحتضان الأولى',
+        cycleFilter: 'cycle-1',
+        year: '2022',
+        regNo: 'غير محدد',
+        college: 'الطب والصيدلة',
+        status: 'خريج متميز',
+        icon: 'fas fa-spa',
+        desc: 'إنتاج مستحضرات تجميل طبية من المخلفات النباتية غير المستخدمة لنبات صبار التين الشوكي، حيث تحضر المنتجات بمستخلصات نباتية غنية بمضادات سرطان الجلد الفعالة ومضادات الالتهابات الجلدية لتحقيق الصحة والجمال معاً.'
+      },
+      {
+        id: 'st-ctm',
+        name: 'سى تى إم لتصنيع الآلات الزراعية - CTM',
+        category: 'agri',
+        categoryTitle: 'الميكنة والآلات الزراعية',
+        cycle: 'دورة الاحتضان الأولى',
+        cycleFilter: 'cycle-1',
+        year: '2022',
+        regNo: 'غير محدد',
+        college: 'الهندسة الميكانيكية والزراعية',
+        status: 'خريج متميز',
+        icon: 'fas fa-tractor',
+        desc: 'تطوير وتصنيع آلة حصاد لتصبح متعددة الأغراض في الحيازات والمزارع الصغيرة، حيث تصلح لحصاد مختلف الحبوب وأيضاً لتقليب وصناعة الكمبوست بتكاليف اقتصادية منافسة.'
+      },
+      {
+        id: 'st-ams',
+        name: 'السوق الميكانيكى الزراعى الإلكترونى - AMS-Online',
+        category: 'agri',
+        categoryTitle: 'المنصات الرقمية والهندسة الزراعية',
+        cycle: 'دورة الاحتضان الأولى',
+        cycleFilter: 'cycle-1',
+        year: '2022',
+        regNo: 'غير محدد',
+        college: 'الهندسة الزراعية ونظم المعلومات',
+        status: 'خريج متميز',
+        icon: 'fas fa-store',
+        desc: 'منصّة إلكترونية لربط منتجي مستلزمات الزراعة والغذاء بالمستهلكين وتوصيلها، مع تقديم خدمات واستشارات الهندسة الزراعية والنظم الحيوية، وتصميم وبيع قطع غيار الآلات وأنظمة الزراعة الذكية.'
+      },
+      {
+        id: 'st-vresco',
+        name: 'فيريسكو - VRESCO',
+        category: 'health',
+        categoryTitle: 'التغذية والبدائل الصحية',
+        cycle: 'دورة الاحتضان الأولى',
+        cycleFilter: 'cycle-1',
+        year: '2022',
+        regNo: 'غير محدد',
+        college: 'العلوم والتكنولوجيا الحيوية',
+        status: 'خريج متميز',
+        icon: 'fas fa-capsules',
+        desc: 'إنتاج المكملات والبدائل الغذائية الصحية المستخلصة من طحلب "الأسبيرولينا" لتوفير محتوى متكامل من العناصر الغذائية اليومية للإنسان في صورة منتجات متنوعة وصحية مناسبة لمختلف الفئات.'
+      },
+
+      // دفعات سابقة (2019 - 2021)
+      {
+        id: 'st-mezna',
+        name: 'مزنة',
+        category: 'agri',
+        categoryTitle: 'الأسمدة العضوية الحيوية',
+        cycle: 'دفعات 2019 - 2021',
+        cycleFilter: 'cycle-prev',
+        year: '2019',
+        regNo: 'غير محدد',
+        college: 'الزراعة والكيمياء الحيوية',
+        status: 'خريج متميز 2019',
+        icon: 'fas fa-seedling',
+        desc: 'إنتاج الأسمدة العضوية الحيوية عالية الجودة ومنخفضة التكلفة من مخلفات المواد الزراعية عن طريق تدويرها بتصنيع عدة منتجات غير تقليدية مثل السماد العضوي السائل الذي يغذي النباتات بالعناصر الكيميائية عبر ثلاث مراحل نمو رئيسية.'
+      },
+      {
+        id: 'st-egycody',
+        name: 'ايجى كودى - EgyCodey',
+        category: 'ai',
+        categoryTitle: 'تكنولوجيا التعليم والبرمجة',
+        cycle: 'دفعات 2019 - 2021',
+        cycleFilter: 'cycle-prev',
+        year: '2019',
+        regNo: 'غير محدد',
+        college: 'الحاسبات والتعليم التكنولوجي',
+        status: 'خريج متميز 2019',
+        icon: 'fas fa-laptop-code',
+        desc: 'منصة تعليمية مبتكرة لتعليم الأطفال البرمجة واستخدام التكنولوجيا في التعليم بالاعتماد على نموذج التعليم المقلوب والمحفزات التعليمية التفاعلية والتطبيق العملي.'
+      },
+      {
+        id: 'st-nabata2',
+        name: 'نباتا 2 - Nabata 2',
+        category: 'crafts',
+        categoryTitle: 'الحرف التراثية وتدوير المخلفات',
+        cycle: 'دفعات 2019 - 2021',
+        cycleFilter: 'cycle-prev',
+        year: '2019',
+        regNo: 'غير محدد',
+        college: 'الفنون والتراث البيئي',
+        status: 'خريج متميز 2019',
+        icon: 'fas fa-palette',
+        desc: 'تصميم وتنفيذ وتصنيع المنتجات اليدوية التراثية عالية الجودة وتسويقها محلياً ودولياً للحفاظ على الهوية النوبية وإبراز ألوانها المبهجة، بالاعتماد على تدوير مخلفات ومكونات النخيل والموز.'
+      },
+      {
+        id: 'st-serket',
+        name: 'SERKET - سيركت',
+        category: 'health',
+        categoryTitle: 'التكنولوجيا الطبية الحيوية',
+        cycle: 'دفعات 2019 - 2021',
+        cycleFilter: 'cycle-prev',
+        year: '2021',
+        regNo: 'غير محدد',
+        college: 'الطب والعلوم الطبية الحيوية',
+        status: 'خريج متميز 2021',
+        icon: 'fas fa-flask-vial',
+        desc: 'تربية العقارب في كبائن مخصصة لتكاثرها واستخراج سم العقرب منها علمياً لأكثر من ثلاث مرات لإنتاج وتوريد السموم الطبية المستخدمة في صناعة أمصال لدغات العقارب والمسكنات الطبية غير المسببة للإدمان.'
+      },
+      {
+        id: 'st-elaph',
+        name: 'ELAPH - إيلاف',
+        category: 'greentech',
+        categoryTitle: 'التكنولوجيا البيئية والتعدين',
+        cycle: 'دفعات 2019 - 2021',
+        cycleFilter: 'cycle-prev',
+        year: '2021',
+        regNo: 'غير محدد',
+        college: 'هندسة التعدين والبيئة',
+        status: 'خريج متميز 2021',
+        icon: 'fas fa-filter',
+        desc: 'الاستفادة من رواسب خام الكاولين المصري لإنتاج الزيوليت الاقتصادي لإزالة غاز الأمونيا بمزارع الدواجن وتقليل النفوق وإلغاء المراوح الباهظة، ثم إعادة تدوير الفلاتر المشبعة كسماد نيتروجيني حيوي فائق الجودة.'
+      }
     ];
+    localStorage.setItem('rwaq_startups_v3', JSON.stringify(defaultStartups));
+    return defaultStartups;
   },
 
   async addStartup(startupData) {
@@ -155,9 +365,9 @@ window.RwaqDB = {
       }
     }
     const startups = await this.getStartups();
-    const newStartup = { id: 's-' + Date.now(), ...startupData };
+    const newStartup = { id: 'st-' + Date.now(), ...startupData };
     startups.unshift(newStartup);
-    localStorage.setItem('rwaq_startups', JSON.stringify(startups));
+    localStorage.setItem('rwaq_startups_v3', JSON.stringify(startups));
     return newStartup;
   },
 
@@ -172,7 +382,7 @@ window.RwaqDB = {
     }
     let startups = await this.getStartups();
     startups = startups.filter(s => s.id !== id);
-    localStorage.setItem('rwaq_startups', JSON.stringify(startups));
+    localStorage.setItem('rwaq_startups_v3', JSON.stringify(startups));
     return true;
   },
 
