@@ -3163,13 +3163,27 @@ footer {
    ========================================= */
 .nav-item-dropdown {
   position: relative;
+  padding-bottom: 0.45rem;
+  margin-bottom: -0.45rem;
 }
 
-.nav-item-dropdown:hover .nav-dropdown {
+.nav-item-dropdown .dropdown-trigger i {
+  transition: transform 0.25s ease;
+}
+
+.nav-item-dropdown:hover .dropdown-trigger i,
+.nav-item-dropdown:focus-within .dropdown-trigger i {
+  transform: rotate(180deg);
+}
+
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown:focus-within .nav-dropdown,
+.nav-dropdown:hover {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0s;
 }
 
 .nav-dropdown {
@@ -3184,13 +3198,26 @@ footer {
   border-radius: var(--radius-md);
   box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
   padding: 0.8rem;
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(8px);
+  transition: opacity 0.2s ease 0.15s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, visibility 0.2s 0.15s;
   pointer-events: none;
   z-index: 1100;
+}
+
+/* Invisible Hover Bridge connecting trigger button directly to dropdown menu */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  right: 0;
+  left: 0;
+  height: 28px;
+  background: transparent;
+  display: block;
+  pointer-events: auto;
 }
 
 .dropdown-header {
