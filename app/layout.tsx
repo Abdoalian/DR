@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import GoogleTopStrip from '@/components/GoogleTopStrip';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import GoogleAppShell from '@/components/GoogleAppShell';
 import ApplyModal from '@/components/ApplyModal';
 
 export const metadata: Metadata = {
   title: 'حاضنة الأعمال التكنولوجية رواق | مركز الابتكار وريادة الأعمال - جامعة الأزهر',
   description:
-    'حاضنة الأعمال التكنولوجية رواق (RWAQ) بمركز الابتكار وريادة الأعمال جامعة الأزهر - تبني الشركات الناشئة وتطوير نماذج الأعمال القابلة للاستثمار والدخول للمنافسة في السوق.',
+    'حاضنة الأعمال التكنولوجية رواق (RWAQ) بمركز الابتكار وريادة الأعمال جامعة الأزهر - تبني الشركات الناشئة وتطوير نماذج الأعمال القابلة للاستثمار.',
   icons: {
     icon: '/images/logo.png',
   },
@@ -38,16 +36,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GoogleTopStrip />
-
-        {/* Ambient Google Pastel Background Glows */}
-        <div className="bg-blob blob-1" aria-hidden="true"></div>
-        <div className="bg-blob blob-2" aria-hidden="true"></div>
-        <div className="bg-blob blob-3" aria-hidden="true"></div>
-
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <GoogleAppShell>
+          {children}
+        </GoogleAppShell>
         <ApplyModal />
       </body>
     </html>
