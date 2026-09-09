@@ -1,0 +1,203 @@
+/* ---------------------------------------------------- */
+/* RWAQ Premium CSS Animation Library (animations.css)   */
+/* ---------------------------------------------------- */
+
+/* --- Custom Easings & Durations --- */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.27, 1.55);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  --anim-duration-sm: 0.3s;
+  --anim-duration-md: 0.6s;
+  --anim-duration-lg: 1s;
+}
+
+/* --- Scroll-Triggered & Entrance Animations --- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--anim-duration-md) var(--ease-out-expo), 
+              transform var(--anim-duration-md) var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific reveal variations */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity var(--anim-duration-md) var(--ease-out-expo);
+}
+.reveal-fade.animated {
+  opacity: 1;
+}
+
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity var(--anim-duration-md) var(--ease-out-expo), 
+              transform var(--anim-duration-md) var(--ease-out-expo);
+}
+.reveal-slide-left.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--anim-duration-md) var(--ease-out-expo), 
+              transform var(--anim-duration-md) var(--ease-out-expo);
+}
+.reveal-slide-right.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity var(--anim-duration-md) var(--ease-out-expo), 
+              transform var(--anim-duration-md) var(--ease-out-expo);
+}
+.reveal-zoom.animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Animation Delays --- */
+.delay-100 { transition-delay: 100ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
+.delay-600 { transition-delay: 600ms !important; }
+
+/* --- Idle & Loop Animations --- */
+
+/* Infinite Float */
+.anim-float {
+  animation: floatLoop 5s ease-in-out infinite;
+}
+@keyframes floatLoop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Smooth Pulse */
+.anim-pulse {
+  animation: pulseLoop 4s ease-in-out infinite alternate;
+}
+@keyframes pulseLoop {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.04); opacity: 1; }
+}
+
+/* Shimmer Loader Effect */
+.anim-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Background blob drift */
+.anim-blob-drift {
+  animation: blobDrift 20s infinite alternate linear;
+}
+@keyframes blobDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -60px) scale(1.1); }
+  100% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+/* --- Interactive & Hover Micro-Animations --- */
+
+/* Premium Card Hover Lift */
+.hover-lift {
+  transition: transform var(--anim-duration-sm) var(--ease-out-expo), 
+              box-shadow var(--anim-duration-sm) var(--ease-out-expo),
+              border-color var(--anim-duration-sm) var(--ease-out-expo);
+}
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.18), 0 10px 20px -8px rgba(124, 58, 237, 0.12);
+  border-color: rgba(79, 70, 229, 0.25) !important;
+}
+
+/* Glow Border transition on hover */
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(79, 70, 229, 0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.hover-glow:hover::after {
+  opacity: 1;
+}
+
+/* Hover scales icons inside parent */
+.hover-scale-icon {
+  transition: transform 0.3s var(--ease-out-back);
+}
+.hover-scale-icon:hover i,
+.hover-lift:hover .pillar-icon i,
+.hover-lift:hover .startup-logo i {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+/* Floating Card Isometric Rotate Tilt on Hover */
+.tilt-card {
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.tilt-card:hover {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+}
+
+/* --- Button Magnet / Shifting Gradient --- */
+.btn-animate {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 200%; height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed, #10b981, #4f46e5);
+  transition: transform 0.5s ease;
+  z-index: -1;
+  transform: translateX(0);
+}
+.btn-animate:hover::before {
+  transform: translateX(-50%);
+}
+
+/* Typewriter typing cursor */
+.typewriter-cursor {
+  border-left: 2px solid var(--primary);
+  animation: blink 0.75s step-end infinite;
+}
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary); }
+}
