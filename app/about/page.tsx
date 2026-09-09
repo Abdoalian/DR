@@ -1,147 +1,246 @@
-import type { Metadata } from 'next';
+'use client';
+
+import React from 'react';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'عن الحاضنة | حاضنة الأعمال التكنولوجية رواق - جامعة الأزهر',
-  description:
-    'تعرّف على رؤية ورسالة وأهداف حاضنة الأعمال التكنولوجية رواق بمركز الابتكار وريادة الأعمال جامعة الأزهر.',
-};
-
 export default function AboutPage() {
+  const openModal = () => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('open-apply-modal'));
+    }
+  };
+
   return (
-    <>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="page-banner-container">
-          <div className="page-banner-content">
-            <h1 className="page-title">عن حاضنة رواق RWAQ</h1>
-            <p className="page-subtitle">نصنع المستقبل الريادي من قلب جامعة الأزهر لتمكين المبتكرين والباحثين في مصر</p>
-            <div className="breadcrumbs">
-              <Link href="/">الرئيسية</Link> <span>/</span> <span>عن رواق</span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+      {/* Header Banner */}
+      <section
+        className="google-surface-card"
+        style={{
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #F0F4F9 100%)',
+          padding: '2.5rem',
+        }}
+      >
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+          <div>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                color: 'var(--google-blue)',
+                backgroundColor: 'var(--google-blue-container)',
+                padding: '0.25rem 0.85rem',
+                borderRadius: '9999px',
+                marginBottom: '0.75rem',
+              }}
+            >
+              <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>info</span>
+              الهوية والرسالة المؤسسية
+            </div>
+
+            <h1 style={{ fontSize: '2.3rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', lineHeight: 1.25 }}>
+              حاضنة رواق: بيت الابتكار في جامعة الأزهر
+            </h1>
+            <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '1rem', lineHeight: 1.7, marginTop: '0.75rem', maxWidth: '620px' }}>
+              أُنشئت حاضنة رواق بمركز الابتكار وريادة الأعمال بجامعة الأزهر لتكون المحرك التكنولوجي الأول لتحويل المعرفة والأبحاث العلمية إلى مشروعات اقتصادية رائدة تخدم خطط التنمية ورؤية مصر.
+            </p>
+
+            <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
+              <button onClick={openModal} className="google-fab-extended">
+                <span className="material-symbols-rounded">rocket_launch</span>
+                انضم لمجتمع رواق
+              </button>
             </div>
           </div>
-          <div className="page-banner-visual">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/about_hero.png" alt="عن رواق" />
+
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div
+              style={{
+                borderRadius: '24px',
+                overflow: 'hidden',
+                boxShadow: 'var(--elevation-2)',
+                border: '1px solid var(--md-sys-color-outline-variant)',
+                maxWidth: '460px',
+                width: '100%',
+              }}
+            >
+              <img src="/images/meeting.png" alt="فريق عمل رواق" style={{ width: '100%', height: 'auto' }} />
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Vision & Mission Surfaces (Google Split Card) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+        {/* Vision */}
+        <div
+          className="google-surface-card"
+          style={{ borderTop: '4px solid var(--google-blue)' }}
+        >
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '14px',
+              backgroundColor: 'rgba(11, 87, 208, 0.1)',
+              color: 'var(--google-blue)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '1rem',
+            }}
+          >
+            <span className="material-symbols-rounded">visibility</span>
+          </div>
+          <h2 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.75rem' }}>رؤيتنا الاستراتيجية</h2>
+          <p style={{ fontSize: '0.92rem', color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.7 }}>
+            أن تكون حاضنة رواق النموذج الريادي الأول بين الجامعات المصرية والإقليمية في ربط البحث العلمي بالصناعة، وتأسيس شركات تكنولوجية ناشئة ذات أثر تنموي واقتصادي حقيقي.
+          </p>
+        </div>
+
+        {/* Mission */}
+        <div
+          className="google-surface-card"
+          style={{ borderTop: '4px solid var(--google-green)' }}
+        >
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '14px',
+              backgroundColor: 'rgba(30, 142, 62, 0.1)',
+              color: 'var(--google-green)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '1rem',
+            }}
+          >
+            <span className="material-symbols-rounded">flag</span>
+          </div>
+          <h2 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.75rem' }}>رسالتنا</h2>
+          <p style={{ fontSize: '0.92rem', color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.7 }}>
+            تمكين المبتكرين والباحثين في جامعة الأزهر عبر توفير التمويل الأولي، الإرشاد التجاري والقانوني، وتجهيزات المعامل المتقدمة لتحويل الأفكار إلى منتجات قابلة للتسويق والمنافسة عالمياً.
+          </p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <section className="section">
-        <div className="split-feature">
-          <div className="split-feature-content">
-            <span className="section-tag">مركز الابتكار وريادة الأعمال</span>
-            <h2 className="section-title">رؤيتنا ورسالتنا المؤسسية</h2>
-            <p className="hero-desc">
-              تُعد حاضنة الأعمال التكنولوجية <strong>رواق (RWAQ)</strong> منصة انطلاق وطنية رائدة تهدف إلى احتضان الأفكار
-              التكنولوجية والابتكارية النابعة من كليات جامعة الأزهر ومختلف المؤسسات البحثية والتعليمية في مصر، وتحويلها
-              إلى مشروعات اقتصادية ناشئة قادرة على المنافسة والنمو.
-            </p>
-            <ul className="feature-check-list" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-green)' }}></i>
-                <span>دعم الملكية الفكرية وبراءات الاختراع للجامعة.</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-green)' }}></i>
-                <span>ربط البحث العلمي باحتياجات الصناعة والسوق المحلي والإقليمي.</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-green)' }}></i>
-                <span>تمكين شباب المبتكرين وتزويدهم بالمعرفة الاستثمارية الحديثة.</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-green)' }}></i>
-                <span>خلق فرص عمل نوعية وتطوير اقتصاد المعرفة.</span>
-              </li>
-            </ul>
+      {/* Lab & Makerspace Section (Google Tech Feature Card) */}
+      <section
+        id="lab"
+        className="google-surface-card"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+          alignItems: 'center',
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.78rem',
+              fontWeight: 700,
+              color: 'var(--google-blue)',
+              backgroundColor: 'var(--google-blue-container)',
+              padding: '0.2rem 0.75rem',
+              borderRadius: '9999px',
+              marginBottom: '0.75rem',
+            }}
+          >
+            <span className="material-symbols-rounded" style={{ fontSize: '0.95rem' }}>precision_manufacturing</span>
+            التصنيع الرقمي والنمذجة
           </div>
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/coworking.png"
-              alt="مساحة العمل بمركز الابتكار"
-              style={{ width: '100%', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)' }}
-            />
+
+          <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', marginBottom: '1rem' }}>
+            معمل التصنيع السريع FabLab &amp; Makerspace
+          </h2>
+
+          <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+            يمتلك مركز الابتكار ورواق واحداً من أحدث معامل التصنيع الرقمي الجامعية في مصر، مجهزاً بأحدث طابعات 3D، ماكينات الـ CNC، قواطع الليزر فائقة الدقة، ومحطات اللحام والبرمجة الدقيقة لتمكين الفرق من بناء النموذج الأولي خلال أيام.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface)' }}>
+              <span className="material-symbols-rounded" style={{ color: 'var(--google-blue)' }}>check_circle</span>
+              طابعات ثلاثية الأبعاد صناعية
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface)' }}>
+              <span className="material-symbols-rounded" style={{ color: 'var(--google-blue)' }}>check_circle</span>
+              ماكينات تقطيع ليزر عالية الدقة
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface)' }}>
+              <span className="material-symbols-rounded" style={{ color: 'var(--google-blue)' }}>check_circle</span>
+              محطات اختبار الدوائر الإلكترونية
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface)' }}>
+              <span className="material-symbols-rounded" style={{ color: 'var(--google-blue)' }}>check_circle</span>
+              ميكروسكوبات رقمية لفحص المواد
+            </div>
           </div>
         </div>
 
-        {/* Tech Labs Showcase */}
-        <div className="split-feature" style={{ marginTop: '5rem' }}>
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tech_lab.png"
-              alt="معمل الابتكار والتصنيع"
-              style={{ width: '100%', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)' }}
-            />
-          </div>
-          <div className="split-feature-content">
-            <span className="section-tag">البنية التحتية والمختبرات</span>
-            <h2 className="section-title">معامل النمذجة والتصنيع السريع (Makerspace & Prototyping)</h2>
-            <p className="hero-desc">
-              تضم الحاضنة أحدث معامل تصنيع النماذج الأولية المجهزة بطابعات ثلاثية الأبعاد، أجهزة اختبار الدوائر
-              الإلكترونية، وحدات إنترنت الأشياء IoT، ومعدات الذكاء الاصطناعي لتمكين رواد الأعمال من تحويل مخططاتهم إلى
-              منتجات ملموسة.
-            </p>
-            <ul className="feature-check-list" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-blue)' }}></i>
-                <span>معامل تصنيع إلكترونيات وروبوتات متطورة.</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-blue)' }}></i>
-                <span>استشارات فنية من كبار أساتذة الهندسة والعلوم.</span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--google-blue)' }}></i>
-                <span>استضافات ومساحات عمل مجهزة للفرق المحتضنة.</span>
-              </li>
-            </ul>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div
+            style={{
+              borderRadius: '24px',
+              overflow: 'hidden',
+              boxShadow: 'var(--elevation-2)',
+              border: '1px solid var(--md-sys-color-outline-variant)',
+              maxWidth: '460px',
+              width: '100%',
+            }}
+          >
+            <img src="/images/tech_lab.png" alt="معمل التصنيع السريع" style={{ width: '100%', height: 'auto' }} />
           </div>
         </div>
       </section>
 
-      {/* Incubator Values */}
-      <section className="section" style={{ background: '#FFFFFF', borderRadius: 'var(--radius-xl)', padding: '4rem 2rem', marginBottom: '4rem', border: '1px solid var(--border)' }}>
-        <div className="section-header">
-          <span className="section-tag">قيمنا الجوهرية</span>
-          <h2 className="section-title">المبادئ التي تقود كل خطوة في رواق</h2>
-        </div>
+      {/* Values Grid */}
+      <section className="google-surface-card">
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', textAlign: 'center' }}>
+          قيم ومبادئ العمل في حاضنة رواق
+        </h2>
 
-        <div className="pillars-grid">
-          <div className="pillar-card">
-            <div className="pillar-icon">
-              <i className="fas fa-shield-alt"></i>
-            </div>
-            <h3 className="pillar-title">النزاهة والشفافية</h3>
-            <p className="pillar-desc">
-              تقييم عادل واختيار مبني على الكفاءة والتنافسية العلمية لضمان وصول الدعم للمستحقين والأفكار الأكثر جدوى.
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+          <div style={{ textAlign: 'center', padding: '1.25rem' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>💡</div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem' }}>الابتكار الهادف</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+              التركيز على ابتكارات تخدم احتياجات المجتمع وتحل أزمات حقيقية في الصناعة والبيئة.
             </p>
           </div>
 
-          <div className="pillar-card">
-            <div className="pillar-icon">
-              <i className="fas fa-handshake"></i>
-            </div>
-            <h3 className="pillar-title">الشراكة والتكامل</h3>
-            <p className="pillar-desc">
-              نعمل كشركاء نجاح حقيقيين مع الفرق المحتضنة، نبني معهم نموذج العمل ونساندهم حتى وصولهم للاستثمار.
+          <div style={{ textAlign: 'center', padding: '1.25rem' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🤝</div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem' }}>الشفافية والتكامل</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+              تقييم عادل لجميع الأفكار وبناء شراكات وثيقة مع قطاع الأعمال والاستثمار.
             </p>
           </div>
 
-          <div className="pillar-card">
-            <div className="pillar-icon">
-              <i className="fas fa-bolt"></i>
-            </div>
-            <h3 className="pillar-title">الابتكار والأثر</h3>
-            <p className="pillar-desc">
-              نركز على المشروعات التي تقدم حلولاً تكنولوجية لتحديات حقيقية في مجالات الصحة والزراعة والمناخ والطاقة.
+          <div style={{ textAlign: 'center', padding: '1.25rem' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🌱</div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem' }}>الاستدامة والأثر</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+              بناء شركات قادرة على الصمود المالي وخلق فرص عمل واعدة للشباب والباحثين.
+            </p>
+          </div>
+
+          <div style={{ textAlign: 'center', padding: '1.25rem' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🏆</div>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem' }}>الجودة والتميز</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+              معايير احتضان دولية تؤهل المشروعات للمنافسة في الأسواق الإقليمية والعالمية.
             </p>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

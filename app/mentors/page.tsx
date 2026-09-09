@@ -1,142 +1,256 @@
-import type { Metadata } from 'next';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'شبكة الموجهين والخبراء | حاضنة الأعمال التكنولوجية رواق',
-  description: 'تعرف على نخبة الاستشاريين والموجهين الأكاديميين والصناعيين الداعمين لفرق حاضنة رواق.',
-};
+interface Mentor {
+  id: string;
+  name: string;
+  title: string;
+  role: string;
+  tags: string[];
+  avatar: string;
+  badgeColor: string;
+  bio: string;
+}
+
+const mentorsList: Mentor[] = [
+  {
+    id: '1',
+    name: 'أ.د. محمد جلال فرغلي',
+    title: 'عميد كلية الهندسة - جامعة الأزهر | مدير المركز',
+    role: 'رئيس شبكة الحاضنات والمشرف العام',
+    tags: ['إدارة الابتكار', 'نقل التكنولوجيا', 'التطوير الهندسي والصناعي'],
+    avatar: '/images/dr_mohamed_galal.jpg',
+    badgeColor: '#0B57D0',
+    bio: 'قاد تأسيس مركز الابتكار وشبكة الحاضنات الست بجامعة الأزهر، وأشرف على احتضان العشرات من الشركات الناشئة وتحويل براءات الاختراع لمنتجات حقيقية.',
+  },
+  {
+    id: '2',
+    name: 'د. محمد الشربيني',
+    title: 'خبير استراتيجيات الأعمال ونمو الشركات',
+    role: 'استشاري التخطيط الاستراتيجي ودراسات الجدوى',
+    tags: ['Business Model Canvas', 'نمذجة الأعمال', 'التوسع المالي'],
+    avatar: '/images/hero.png',
+    badgeColor: '#1E8E3E',
+    bio: 'يقدم جلسات إرشادية حول التحقق من السوق، وهندسة الإيرادات، وتصميم المقترح القيمي للشركات الناشئة في المراحل المبكرة.',
+  },
+  {
+    id: '3',
+    name: 'م. يوسف النجار',
+    title: 'استشاري تقنيات الذكاء الاصطناعي والحلول السحابية',
+    role: 'موجه تكنولوجي وهندسي',
+    tags: ['Machine Learning', 'Cloud Architecture', 'الذكاء الاصطناعي'],
+    avatar: '/images/hero.png',
+    badgeColor: '#0B57D0',
+    bio: 'مهندس أول للحلول السحابية ونظم الذكاء الاصطناعي، يرشد الفرق على بناء بنية تحتية برمجية قابلة للتوسع والأمان.',
+  },
+  {
+    id: '4',
+    name: 'د. ريهام العوضي',
+    title: 'مستشارة الملكية الفكرية وبراءات الاختراع',
+    role: 'خبير الشؤون القانونية وبراءات الاختراع',
+    tags: ['براءات الاختراع', 'العقود الاستثمارية', 'حماية الملكية'],
+    avatar: '/images/hero.png',
+    badgeColor: '#F9AB00',
+    bio: 'متخصصة في صياغة ملفات براءات الاختراع الوطنية والدولية، وحماية الأسرار التجارية، وهيكلة اتفاقيات تقاسم الحصص بين المؤسسين.',
+  },
+  {
+    id: '5',
+    name: 'أ. حسام فؤاد',
+    title: 'مستثمر ملائكي وشريك في صندوق استثماري',
+    role: 'موجه التمويل والاستثمار الجريء',
+    tags: ['Venture Capital', 'Pitch Deck', 'تقييم الشركات'],
+    avatar: '/images/hero.png',
+    badgeColor: '#D93025',
+    bio: 'يدرب رواد الأعمال على تجهيز العروض الاستثمارية (Pitching)، واجتياز الفحص النافي للجهالة، ومفاوضات تقييم الشركات مع المستثمرين.',
+  },
+  {
+    id: '6',
+    name: 'د. طارق عبد الحميد',
+    title: 'أستاذ التكنولوجيا الحيوية والزراعية',
+    role: 'استشاري الابتكار الزراعي والأغذية',
+    tags: ['AgriTech', 'المستخلصات الحيوية', 'التكنولوجيا الزراعية'],
+    avatar: '/images/hero.png',
+    badgeColor: '#1E8E3E',
+    bio: 'مرشد فني لمشروعات الزراعة الذكية وتدوير المخلفات والأسمدة الحيوية وتجارب الأثر الميداني على المحاصيل الزراعية.',
+  },
+];
 
 export default function MentorsPage() {
+  const [selectedTag, setSelectedTag] = useState<string>('all');
+
+  const allTags = ['all', 'إدارة الابتكار', 'نمذجة الأعمال', 'الذكاء الاصطناعي', 'براءات الاختراع', 'Venture Capital', 'AgriTech'];
+
+  const filtered = mentorsList.filter((m) => {
+    if (selectedTag === 'all') return true;
+    return m.tags.includes(selectedTag);
+  });
+
   return (
-    <>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="page-banner-container">
-          <div className="page-banner-content">
-            <h1 className="page-title">شبكة الموجهين والخبراء</h1>
-            <p className="page-subtitle">نخبة من الاستشاريين والخبراء الأكاديميين والصناعيين لدعم وتوجيه الشركات المحتضنة</p>
-            <div className="breadcrumbs">
-              <Link href="/">الرئيسية</Link> <span>/</span> <span>الموجهون والخبراء</span>
-            </div>
-          </div>
-          <div className="page-banner-visual">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/hero.png" alt="الموجهون والخبراء" style={{ maxHeight: '200px' }} />
-          </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {/* Header Banner */}
+      <section
+        className="google-surface-card"
+        style={{
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F8FC 100%)',
+          padding: '2.25rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            color: 'var(--google-blue)',
+            backgroundColor: 'var(--google-blue-container)',
+            padding: '0.25rem 0.85rem',
+            borderRadius: '9999px',
+            marginBottom: '0.75rem',
+          }}
+        >
+          <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>diversity_3</span>
+          الخبراء والموجهون
+        </div>
+
+        <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', lineHeight: 1.2 }}>
+          شبكة الموجهين والخبراء الاستشاريين
+        </h1>
+        <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.98rem', marginTop: '0.5rem', maxWidth: '650px' }}>
+          نخبة من قادة الصناعة، المستثمرين، وعلماء جامعة الأزهر يقدمون جلسات إرشاد وتوجيه مخصصة لكل شركة محتضنة.
+        </p>
+      </section>
+
+      {/* Filter Chips */}
+      <div className="google-surface-card" style={{ padding: '1rem 1.5rem' }}>
+        <div className="google-chip-group">
+          {allTags.map((t) => (
+            <button
+              key={t}
+              onClick={() => setSelectedTag(t)}
+              className={`google-chip ${selectedTag === t ? 'active' : ''}`}
+            >
+              {t === 'all' ? 'جميع الموجهين' : t}
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Mentors Grid */}
-      <section className="section">
-        <div className="section-header">
-          <span className="section-tag">الإرشاد الفني والتجاري</span>
-          <h2 className="section-title">استشاريو وموجهو حاضنة رواق</h2>
-          <p className="section-subtitle">نوفر للشركات المحتضنة جلسات توجيهية خاصة مع قادة ريادة الأعمال والاستثمار.</p>
-        </div>
-
-        <div className="mentors-grid">
-          {/* Featured Chief Mentor / Director */}
-          <div className="mentor-card featured">
-            <div className="mentor-header">
-              <div className="mentor-avatar">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/dr_mohamed_galal.jpg"
-                  alt="أ.د. محمد جلال فرغلي"
-                />
-              </div>
-              <div>
-                <div className="hn-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.5rem' }}>
-                  <i className="fas fa-crown"></i> مدير المركز ورئيس شبكة الحاضنات
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+          gap: '1.75rem',
+        }}
+      >
+        {filtered.map((m) => (
+          <div
+            key={m.id}
+            className="google-surface-card"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              borderTop: `4px solid ${m.badgeColor}`,
+            }}
+          >
+            <div>
+              {/* Header */}
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    boxShadow: 'var(--elevation-1)',
+                    border: '2px solid var(--md-sys-color-outline-variant)',
+                    flexShrink: 0,
+                  }}
+                >
+                  <img src={m.avatar} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <h3 className="mentor-name" style={{ fontSize: '1.45rem', fontWeight: 800, marginBottom: '0.35rem' }}>
-                  أ.د. محمد جلال فرغلي
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-                  عميد كلية الهندسة ومدير مركز الابتكار وريادة الأعمال - جامعة الأزهر
-                </p>
+                <div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', marginBottom: '0.2rem' }}>
+                    {m.name}
+                  </h3>
+                  <div style={{ fontSize: '0.8rem', color: m.badgeColor, fontWeight: 700 }}>
+                    {m.role}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--md-sys-color-outline)' }}>
+                    {m.title}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bio */}
+              <p style={{ fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+                {m.bio}
+              </p>
+
+              {/* Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
+                {m.tags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '9999px',
+                      backgroundColor: 'var(--md-sys-color-surface-container-high)',
+                      color: 'var(--md-sys-color-on-surface)',
+                    }}
+                  >
+                    #{tag}
+                  </span>
+                ))}
               </div>
             </div>
-            <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
-              المشرف العام والرئيسي على حاضنة الأعمال التكنولوجية &ldquo;رواق&rdquo; بجميع فروعها ووحداتها التخصصية، والقائم على تطوير المنظومة الابتكارية ودعم الباحثين والمبتكرين في تحويل أفكارهم التطبيقية إلى شركات ناشئة ذات أثر اقتصادي.
-            </p>
-            <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-              <span className="hn-tag"><i className="fas fa-user-tie"></i> الإشراف الريادي العام</span>
-              <span className="hn-tag" style={{ background: 'var(--google-green-container)', color: 'var(--google-green)' }}><i className="fas fa-building-columns"></i> إدارة مركز الابتكار</span>
-              <span className="hn-tag" style={{ background: 'var(--google-yellow-container)', color: 'var(--google-yellow)' }}><i className="fas fa-microscope"></i> التكنولوجيا والهندسة</span>
-              <span className="hn-tag" style={{ background: 'var(--google-blue-container)', color: 'var(--google-blue)' }}><i className="fas fa-chart-line"></i> التخطيط الاستراتيجي</span>
-            </div>
-          </div>
 
-          {/* Mentor 1 */}
-          <div className="mentor-card">
-            <div className="mentor-avatar" style={{ background: 'var(--google-blue-container)', color: 'var(--google-blue)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', marginBottom: '1rem' }}>
-              <i className="fas fa-user-tie"></i>
-            </div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.35rem' }}>د. أحمد عبد الفتاح</h3>
-            <p style={{ color: 'var(--primary)', fontSize: '0.86rem', fontWeight: 600, marginBottom: '0.75rem' }}>استشاري التمويل وجولات الاستثمار</p>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-              خبير في تقييم الشركات الناشئة وجاهزية الاستثمار مع أكثر من 15 عاماً من الخبرة في صناديق رأس المال المخاطر VC.
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Venture Capital</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Valuation</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Fintech</span>
-            </div>
-          </div>
-
-          {/* Mentor 2 */}
-          <div className="mentor-card">
-            <div className="mentor-avatar" style={{ background: 'var(--google-red-container)', color: 'var(--google-red)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', marginBottom: '1rem' }}>
-              <i className="fas fa-user-graduate"></i>
-            </div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.35rem' }}>أ.د. فاطمة الزهراء</h3>
-            <p style={{ color: 'var(--primary)', fontSize: '0.86rem', fontWeight: 600, marginBottom: '0.75rem' }}>أستاذة هندسة البرمجيات والذكاء الاصطناعي</p>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-              مشرفة على معامل الأبحاث المتقدمة بالجامعة ومستشارة تطوير المنتجات الرقمية والأنظمة الذكية وتطبيقات الحوسبة.
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>AI & ML</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Architecture</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>R&D</span>
-            </div>
-          </div>
-
-          {/* Mentor 3 */}
-          <div className="mentor-card">
-            <div className="mentor-avatar" style={{ background: 'var(--google-green-container)', color: 'var(--google-green)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', marginBottom: '1rem' }}>
-              <i className="fas fa-scale-balanced"></i>
-            </div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.35rem' }}>م. محمود الشريف</h3>
-            <p style={{ color: 'var(--primary)', fontSize: '0.86rem', fontWeight: 600, marginBottom: '0.75rem' }}>مستشار الملكية الفكرية وتأسيس الشركات</p>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-              متخصص في تسجيل براءات الاختراع والعقود الاستثمارية وصياغة اتفاقيات الشركاء المؤسسين وحماية الأصول الفكرية.
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>IP & Patents</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Legal</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Corporate</span>
+            {/* Action */}
+            <div
+              style={{
+                paddingTop: '1rem',
+                borderTop: '1px solid var(--md-sys-color-outline-variant)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <span style={{ fontSize: '0.78rem', color: 'var(--md-sys-color-outline)' }}>
+                جلسات إرشاد وتوجيه دورية
+              </span>
+              <button
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('open-apply-modal'));
+                  }
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '0.45rem 1rem',
+                  borderRadius: '9999px',
+                  backgroundColor: 'var(--google-blue-container)',
+                  color: 'var(--google-on-blue-container)',
+                  border: 'none',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                }}
+              >
+                طلب استشارة
+                <span className="material-symbols-rounded" style={{ fontSize: '0.95rem' }}>arrow_back</span>
+              </button>
             </div>
           </div>
-
-          {/* Mentor 4 */}
-          <div className="mentor-card">
-            <div className="mentor-avatar" style={{ background: 'var(--google-yellow-container)', color: 'var(--google-yellow)', width: '60px', height: '60px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', marginBottom: '1rem' }}>
-              <i className="fas fa-chart-pie"></i>
-            </div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '0.35rem' }}>م. سارة جلال</h3>
-            <p style={{ color: 'var(--primary)', fontSize: '0.86rem', fontWeight: 600, marginBottom: '0.75rem' }}>خبيرة نمو وتسويق رقمي (Growth Hacking)</p>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-              ساعدت أكثر من 20 شركة ناشئة في الوصول للعملاء الأولين وبناء استراتيجيات الذهاب للسوق GTM واكتساب المستخدمين.
-            </p>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Growth</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>GTM Strategy</span>
-              <span className="hn-tag" style={{ fontSize: '0.72rem' }}>Marketing</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

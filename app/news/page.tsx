@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-interface NewsItem {
+interface NewsArticle {
   id: string;
   title: string;
   date: string;
@@ -16,7 +16,7 @@ interface NewsItem {
   readTime: string;
 }
 
-const initialNews: NewsItem[] = [
+const articles: NewsArticle[] = [
   {
     id: '1',
     title: 'انطلاق فعاليات يوم عرض المشروعات Demo Day للدفعة الجديدة',
@@ -26,7 +26,7 @@ const initialNews: NewsItem[] = [
     summary: 'استعرضت 12 شركة ناشئة محتضنة حلولها التكنولوجية أمام عدد من كبار المستثمرين وصناديق الاستثمار الجريء.',
     content: 'شهد مركز الابتكار وريادة الأعمال بجامعة الأزهر فعاليات يوم عرض المشروعات Demo Day لشركات الدفعة الجديدة من حاضنة رواق. قدمت الفرق عروضاً تفاعلية تناولت حلولاً مبتكرة في مجالات الذكاء الاصطناعي والتكنولوجيا الطبية والزراعة الذكية، بحضور ممثلي صناديق الاستثمار الجريء وأعضاء هيئة التدريس وموجهي الأعمال.',
     image: '/images/event.png',
-    accent: '#4285F4',
+    accent: '#0B57D0',
     readTime: '3 دقائق',
   },
   {
@@ -38,7 +38,7 @@ const initialNews: NewsItem[] = [
     summary: 'توفير معدات نمذجة جديدة ثلاثية الأبعاد لدعم المشروعات الهندسية والطبية وتكنولوجيا النانو بجامعة الأزهر.',
     content: 'أعلنت إدارة حاضنة رواق عن إتمام مرحلة التحديث والتطوير الشامل لمعامل النمذجة والتصنيع السريع (Makerspace & FabLab)، بما يتيح للفرق ورواد الأعمال تحويل ابتكاراتهم إلى نماذج أولية صناعية ملموسة بكفاءة وجودة عالية.',
     image: '/images/tech_lab.png',
-    accent: '#34A853',
+    accent: '#1E8E3E',
     readTime: '4 دقائق',
   },
   {
@@ -50,7 +50,7 @@ const initialNews: NewsItem[] = [
     summary: 'جلسة تفاعلية بحضور نخبة من خبراء الإدارة المالية لتدريب الفرق على التوقعات المالية ومؤشرات الأداء الرئيسية KPIs.',
     content: 'أقيمت ورشة عمل متقدمة بقاعات مركز الابتكار شارك فيها أكثر من 30 رائد ورائدة أعمال، ركزت على تصميم نماذج التسعير، إدارة التدفقات النقدية، وحساب تكلفة اكتساب العميل وتجهيز العروض الاستثمارية للمستثمرين.',
     image: '/images/coworking.png',
-    accent: '#FBBC04',
+    accent: '#F9AB00',
     readTime: '2 دقيقة',
   },
   {
@@ -62,31 +62,7 @@ const initialNews: NewsItem[] = [
     summary: 'شراكة جديدة لدعم الشركات الناشئة المتخصصة في الطاقة المتجددة وتدوير المخلفات بالتعاون مع منصة سبارك.',
     content: 'في إطار تفعيل مبادرات الاستدامة والعمل المناخي، وقعت حاضنة رواق اتفاقية تعاون لتعزيز مشاركة الشركات الناشئة في تحديات المناخ وتوفير منح واحتضان تخصصي للابتكارات البيئية الواعدة.',
     image: '/images/meeting.png',
-    accent: '#EA4335',
-    readTime: '3 دقائق',
-  },
-  {
-    id: '5',
-    title: 'معسكر تدريبي مكثف (Bootcamp) للأفكار المتقدمة في التكنولوجيا الطبية',
-    date: '15 يوليو 2026',
-    category: 'workshops',
-    categoryLabel: 'ورش عمل وتدريب',
-    summary: 'تدريب متخصص لأصحاب الابتكارات الطبية من كليات الطب والصيدلة وهندسة الأجهزة الطبية.',
-    content: 'استمر المعسكر لمدة 5 أيام متتالية بهدف التحقق من الفكرة الطبية واستيفاء المتطلبات التنظيمية والتجارب المعملية قبل البدء في مرحلة الاحتضان الكامل.',
-    image: '/images/workshop.png',
-    accent: '#4285F4',
-    readTime: '5 دقائق',
-  },
-  {
-    id: '6',
-    title: 'تكريم الفرق الفائزة بجوائز الابتكار وريادة الأعمال لجامعة الأزهر',
-    date: '02 يوليو 2026',
-    category: 'events',
-    categoryLabel: 'فعاليات ومعارض',
-    summary: 'احتفالية تكريم المشاريع الفائزة في مسابقة ريادة الأعمال السنوية برعاية قيادة الجامعة.',
-    content: 'كرمت قيادة جامعة الأزهر وإدارة مركز الابتكار الفرق المتميزة التي استطاعت تقديم نماذج أولية عملية قابلة للتطبيق الصناعي والتجاري، مع منحهم جوائز نقدية ومسار احتضان مباشر في رواق.',
-    image: '/images/hero.png',
-    accent: '#34A853',
+    accent: '#D93025',
     readTime: '3 دقائق',
   },
 ];
@@ -102,294 +78,227 @@ const categories = [
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeArticle, setActiveArticle] = useState<NewsItem | null>(null);
+  const [activeArticle, setActiveArticle] = useState<NewsArticle | null>(null);
 
-  const filteredNews = initialNews.filter((item) => {
-    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-    const matchesSearch =
+  const filtered = articles.filter((item) => {
+    const matchCat = selectedCategory === 'all' || item.category === selectedCategory;
+    const matchSearch =
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.summary.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return matchCat && matchSearch;
   });
 
   return (
-    <>
-      {/* Page Banner */}
-      <div className="page-banner">
-        <div className="page-banner-container">
-          <div className="page-banner-content">
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: 'rgba(11, 87, 208, 0.08)',
-                color: 'var(--google-blue)',
-                padding: '0.35rem 0.9rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                marginBottom: '1rem',
-              }}
-            >
-              <span className="material-symbols-rounded" style={{ fontSize: '1.1rem' }}>newspaper</span>
-              المركز الإعلامي والأنشطة
-            </div>
-            <h1 className="page-title">الأخبار والفعاليات</h1>
-            <p className="page-subtitle">
-              تابع أحدث الفعاليات، المعسكرات التدريبية، والأنشطة اليومية لمركز الابتكار وحاضنة رواق بجامعة الأزهر.
-            </p>
-            <div className="breadcrumbs">
-              <Link href="/">الرئيسية</Link>
-              <span>/</span>
-              <span>الأخبار والفعاليات</span>
-            </div>
-          </div>
-          <div className="page-banner-visual">
-            <img src="/images/news_hero.png" alt="الأخبار والفعاليات" />
-          </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {/* Header Banner */}
+      <section
+        className="google-surface-card"
+        style={{
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F8FC 100%)',
+          padding: '2.25rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            color: 'var(--google-blue)',
+            backgroundColor: 'var(--google-blue-container)',
+            padding: '0.25rem 0.85rem',
+            borderRadius: '9999px',
+            marginBottom: '0.75rem',
+          }}
+        >
+          <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>newspaper</span>
+          المركز الإعلامي
+        </div>
+
+        <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', lineHeight: 1.2 }}>
+          أخبار وفعاليات حاضنة رواق
+        </h1>
+        <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.98rem', marginTop: '0.5rem', maxWidth: '650px' }}>
+          تغطية مستمرة لورش العمل والهاكاثونات ومعسكرات التدريب ويوم عرض المشروعات أمام المستثمرين.
+        </p>
+      </section>
+
+      {/* Filter and Search Bar */}
+      <div
+        className="google-surface-card"
+        style={{
+          padding: '1.25rem 1.75rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1.25rem',
+        }}
+      >
+        <div className="google-chip-group">
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`google-chip ${isActive ? 'active' : ''}`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
+
+        <div style={{ position: 'relative', minWidth: '260px', flex: '1', maxWidth: '340px' }}>
+          <span
+            className="material-symbols-rounded"
+            style={{
+              position: 'absolute',
+              right: '12px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: 'var(--md-sys-color-outline)',
+              fontSize: '1.2rem',
+            }}
+          >
+            search
+          </span>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="بحث في الأخبار..."
+            style={{
+              width: '100%',
+              padding: '0.6rem 2.6rem 0.6rem 1rem',
+              borderRadius: '9999px',
+              border: '1px solid var(--md-sys-color-outline-variant)',
+              outline: 'none',
+              fontSize: '0.88rem',
+            }}
+          />
         </div>
       </div>
 
-      {/* Main Content */}
-      <section className="section" style={{ paddingTop: '2.5rem' }}>
-        <div className="container">
-          {/* Filter Bar & Search */}
-          <div
+      {/* Articles Grid (Google News style) */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+          gap: '1.75rem',
+        }}
+      >
+        {filtered.map((item) => (
+          <article
+            key={item.id}
+            className="google-surface-card"
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1.25rem',
-              marginBottom: '2.5rem',
-              background: '#FFFFFF',
-              padding: '1.25rem 1.75rem',
-              borderRadius: '20px',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
+              flexDirection: 'column',
+              padding: 0,
+              overflow: 'hidden',
+              borderTop: `4px solid ${item.accent}`,
             }}
           >
-            {/* Chips */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              {categories.map((cat) => {
-                const isActive = selectedCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    style={{
-                      background: isActive ? 'var(--google-blue)' : 'var(--md-sys-color-surface-container-high)',
-                      color: isActive ? '#FFFFFF' : 'var(--md-sys-color-on-surface-variant)',
-                      border: 'none',
-                      padding: '0.5rem 1.1rem',
-                      borderRadius: '9999px',
-                      fontSize: '0.88rem',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      transition: 'all 0.2s cubic-bezier(0.2, 0, 0, 1)',
-                      boxShadow: isActive ? '0 2px 8px rgba(11, 87, 208, 0.25)' : 'none',
-                    }}
-                  >
-                    {cat.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Search Box */}
-            <div style={{ position: 'relative', minWidth: '260px', flex: '1', maxWidth: '380px' }}>
-              <span
-                className="material-symbols-rounded"
+            <div style={{ height: '200px', overflow: 'hidden', position: 'relative' }}>
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div
                 style={{
                   position: 'absolute',
-                  right: '14px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--md-sys-color-on-surface-variant)',
-                  fontSize: '1.25rem',
+                  top: '12px',
+                  right: '12px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(8px)',
+                  color: item.accent,
+                  fontWeight: 700,
+                  fontSize: '0.75rem',
+                  padding: '0.25rem 0.75rem',
+                  borderRadius: '9999px',
+                  boxShadow: 'var(--elevation-1)',
                 }}
               >
-                search
-              </span>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="ابحث في الأخبار والفعاليات..."
-                style={{
-                  width: '100%',
-                  padding: '0.65rem 2.8rem 0.65rem 1rem',
-                  borderRadius: '9999px',
-                  border: '1px solid var(--md-sys-color-outline-variant)',
-                  background: 'var(--md-sys-color-surface-container-lowest)',
-                  fontSize: '0.9rem',
-                  fontFamily: 'inherit',
-                  outline: 'none',
-                  transition: 'border-color 0.2s',
-                }}
-              />
+                {item.categoryLabel}
+              </div>
             </div>
-          </div>
 
-          {/* News Grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-              gap: '1.75rem',
-            }}
-          >
-            {filteredNews.map((item) => (
-              <article
-                key={item.id}
-                className="startup-card"
+            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+              <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
-                  background: '#FFFFFF',
-                  borderRadius: '24px',
-                  overflow: 'hidden',
-                  border: '1px solid var(--md-sys-color-outline-variant)',
-                  boxShadow: 'var(--elevation-1)',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  fontSize: '0.78rem',
+                  color: 'var(--md-sys-color-outline)',
+                  marginBottom: '0.5rem',
                 }}
               >
-                <div style={{ height: '210px', overflow: 'hidden', position: 'relative' }}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '14px',
-                      right: '14px',
-                      background: 'rgba(255, 255, 255, 0.92)',
-                      backdropFilter: 'blur(8px)',
-                      color: item.accent,
-                      fontWeight: 700,
-                      fontSize: '0.78rem',
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: '9999px',
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
-                    }}
-                  >
-                    {item.categoryLabel}
-                  </div>
-                </div>
+                <span>📅 {item.date}</span>
+                <span>•</span>
+                <span>⏱️ {item.readTime}</span>
+              </div>
 
-                <div
-                  style={{
-                    padding: '1.5rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flex: '1',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem',
-                      fontSize: '0.8rem',
-                      color: 'var(--md-sys-color-on-surface-variant)',
-                      marginBottom: '0.6rem',
-                    }}
-                  >
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <span className="material-symbols-rounded" style={{ fontSize: '0.95rem' }}>calendar_today</span>
-                      {item.date}
-                    </span>
-                    <span>•</span>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <span className="material-symbols-rounded" style={{ fontSize: '0.95rem' }}>schedule</span>
-                      {item.readTime}
-                    </span>
-                  </div>
-
-                  <h3
-                    style={{
-                      fontSize: '1.15rem',
-                      fontWeight: 700,
-                      color: 'var(--md-sys-color-on-surface)',
-                      lineHeight: '1.5',
-                      marginBottom: '0.75rem',
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: '0.9rem',
-                      color: 'var(--md-sys-color-on-surface-variant)',
-                      lineHeight: '1.6',
-                      marginBottom: '1.25rem',
-                      flex: '1',
-                    }}
-                  >
-                    {item.summary}
-                  </p>
-
-                  <button
-                    onClick={() => setActiveArticle(item)}
-                    style={{
-                      alignSelf: 'flex-start',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.4rem',
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--google-blue)',
-                      fontWeight: 700,
-                      fontSize: '0.9rem',
-                      cursor: 'pointer',
-                      padding: 0,
-                    }}
-                  >
-                    قراءة الخبر كاملاً
-                    <span className="material-symbols-rounded" style={{ fontSize: '1.1rem' }}>arrow_back</span>
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {filteredNews.length === 0 && (
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '4rem 1rem',
-                background: 'var(--md-sys-color-surface-container-low)',
-                borderRadius: '24px',
-                marginTop: '1.5rem',
-              }}
-            >
-              <span
-                className="material-symbols-rounded"
-                style={{ fontSize: '3.5rem', color: 'var(--md-sys-color-outline)', marginBottom: '1rem' }}
+              <h3
+                style={{
+                  fontSize: '1.15rem',
+                  fontWeight: 800,
+                  color: 'var(--md-sys-color-on-surface)',
+                  lineHeight: 1.4,
+                  marginBottom: '0.65rem',
+                }}
               >
-                search_off
-              </span>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>لا توجد أخبار مطابقة لبحثك</h3>
-              <p style={{ color: 'var(--md-sys-color-on-surface-variant)', marginTop: '0.5rem' }}>
-                جرّب البحث بكلمات أخرى أو اختر تصنيفاً مختلفاً.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
+                {item.title}
+              </h3>
 
-      {/* Article Detail Dialog */}
+              <p
+                style={{
+                  fontSize: '0.88rem',
+                  color: 'var(--md-sys-color-on-surface-variant)',
+                  lineHeight: 1.6,
+                  marginBottom: '1.25rem',
+                  flex: 1,
+                }}
+              >
+                {item.summary}
+              </p>
+
+              <button
+                onClick={() => setActiveArticle(item)}
+                style={{
+                  alignSelf: 'flex-start',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--google-blue)',
+                  fontWeight: 700,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  padding: 0,
+                }}
+              >
+                قراءة الخبر كاملاً
+                <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>arrow_back</span>
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Article Detail Modal (Google Dialog style) */}
       {activeArticle && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 1100,
-            background: 'rgba(0, 0, 0, 0.45)',
+            zIndex: 1200,
+            backgroundColor: 'rgba(0, 0, 0, 0.45)',
             backdropFilter: 'blur(6px)',
             display: 'flex',
             alignItems: 'center',
@@ -400,19 +309,18 @@ export default function NewsPage() {
         >
           <div
             style={{
-              background: '#FFFFFF',
+              backgroundColor: '#FFFFFF',
               borderRadius: '28px',
-              maxWidth: '680px',
+              maxWidth: '650px',
               width: '100%',
               maxHeight: '90vh',
               overflowY: 'auto',
               boxShadow: 'var(--elevation-3)',
               position: 'relative',
-              animation: 'm3FadeScale 0.2s cubic-bezier(0.2, 0, 0, 1)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ height: '240px', position: 'relative' }}>
+            <div style={{ height: '220px', position: 'relative' }}>
               <img
                 src={activeArticle.image}
                 alt={activeArticle.title}
@@ -420,20 +328,13 @@ export default function NewsPage() {
               />
               <button
                 onClick={() => setActiveArticle(null)}
+                className="google-icon-btn"
                 style={{
                   position: 'absolute',
-                  top: '16px',
-                  left: '16px',
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: 'rgba(0, 0, 0, 0.6)',
+                  top: '12px',
+                  left: '12px',
+                  backgroundColor: 'rgba(0, 0, 0, 0.6)',
                   color: '#FFFFFF',
-                  border: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
                 }}
               >
                 <span className="material-symbols-rounded">close</span>
@@ -441,72 +342,54 @@ export default function NewsPage() {
             </div>
 
             <div style={{ padding: '2rem' }}>
-              <div
+              <span
                 style={{
                   display: 'inline-block',
-                  background: 'rgba(11, 87, 208, 0.08)',
-                  color: 'var(--google-blue)',
-                  fontSize: '0.8rem',
+                  backgroundColor: 'var(--google-blue-container)',
+                  color: 'var(--google-on-blue-container)',
+                  fontSize: '0.78rem',
                   fontWeight: 700,
-                  padding: '0.3rem 0.8rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '9999px',
                   marginBottom: '0.75rem',
                 }}
               >
                 {activeArticle.categoryLabel}
-              </div>
+              </span>
 
-              <h2
-                style={{
-                  fontSize: '1.4rem',
-                  fontWeight: 800,
-                  lineHeight: '1.4',
-                  color: 'var(--md-sys-color-on-surface)',
-                  marginBottom: '0.75rem',
-                }}
-              >
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', marginBottom: '0.75rem' }}>
                 {activeArticle.title}
               </h2>
 
               <div
                 style={{
-                  display: 'flex',
-                  gap: '1rem',
-                  fontSize: '0.85rem',
-                  color: 'var(--md-sys-color-on-surface-variant)',
-                  marginBottom: '1.5rem',
-                  paddingBottom: '1rem',
+                  fontSize: '0.82rem',
+                  color: 'var(--md-sys-color-outline)',
+                  marginBottom: '1.25rem',
+                  paddingBottom: '0.75rem',
                   borderBottom: '1px solid var(--md-sys-color-outline-variant)',
                 }}
               >
-                <span>📅 {activeArticle.date}</span>
-                <span>⏱️ {activeArticle.readTime}</span>
+                📅 {activeArticle.date} • ⏱️ {activeArticle.readTime}
               </div>
 
-              <p
-                style={{
-                  fontSize: '1rem',
-                  lineHeight: '1.8',
-                  color: 'var(--md-sys-color-on-surface-variant)',
-                  whiteSpace: 'pre-line',
-                }}
-              >
+              <p style={{ fontSize: '0.95rem', color: 'var(--md-sys-color-on-surface-variant)', lineHeight: 1.8 }}>
                 {activeArticle.content}
               </p>
 
               <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
                 <button
                   onClick={() => setActiveArticle(null)}
-                  className="btn btn-primary"
-                  style={{ borderRadius: '9999px', padding: '0.65rem 1.8rem' }}
+                  className="google-fab-extended"
+                  style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem' }}
                 >
-                  إغلاق النافذة
+                  إغلاق
                 </button>
               </div>
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

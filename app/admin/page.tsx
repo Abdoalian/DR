@@ -136,13 +136,9 @@ export default function AdminPage() {
 
     try {
       const storedApps = localStorage.getItem('rwaq_applications');
-      if (storedApps) {
-        setApplications(JSON.parse(storedApps));
-      }
+      if (storedApps) setApplications(JSON.parse(storedApps));
       const storedMsgs = localStorage.getItem('rwaq_messages');
-      if (storedMsgs) {
-        setMessages(JSON.parse(storedMsgs));
-      }
+      if (storedMsgs) setMessages(JSON.parse(storedMsgs));
     } catch (e) {
       console.error(e);
     }
@@ -190,7 +186,6 @@ export default function AdminPage() {
     setShowAddStartup(false);
   };
 
-  // Metrics
   const totalApps = applications.length;
   const pendingApps = applications.filter((a) => a.status === 'قيد المراجعة').length;
   const approvedApps = applications.filter((a) => a.status === 'مقبول').length;
@@ -200,47 +195,43 @@ export default function AdminPage() {
     return (
       <div
         style={{
-          minHeight: '85vh',
+          minHeight: '70vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: '2rem 1rem',
-          background: 'var(--md-sys-color-surface-container-lowest)',
         }}
       >
         <div
+          className="google-surface-card"
           style={{
-            background: '#FFFFFF',
-            borderRadius: '28px',
-            padding: '2.5rem',
+            maxWidth: '440px',
             width: '100%',
-            maxWidth: '460px',
-            boxShadow: 'var(--elevation-2)',
-            border: '1px solid var(--md-sys-color-outline-variant)',
             textAlign: 'center',
+            borderTop: '4px solid var(--google-blue)',
           }}
         >
           <img
             src="/images/logo.png"
             alt="رواق"
-            style={{ width: '64px', height: '64px', objectFit: 'contain', margin: '0 auto 1rem' }}
+            style={{ width: '56px', height: '56px', objectFit: 'contain', margin: '0 auto 1rem' }}
           />
-          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)' }}>
-            لوحة إدارة حاضنة رواق
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)' }}>
+            بوابة المشرفين وإدارة رواق
           </h2>
-          <p style={{ fontSize: '0.88rem', color: 'var(--md-sys-color-on-surface-variant)', marginTop: '0.25rem', marginBottom: '1.5rem' }}>
-            قم بتسجيل الدخول للوصول إلى لوحة التحكم الإدارية
+          <p style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)', marginBottom: '1.5rem' }}>
+            سجل الدخول لإدارة الطلبات والشركات وقواعد بيانات Firebase
           </p>
 
           {loginError && (
             <div
               style={{
-                background: 'rgba(234, 67, 53, 0.1)',
+                backgroundColor: 'rgba(217, 48, 37, 0.1)',
                 border: '1px solid var(--google-red)',
                 color: 'var(--google-red)',
                 padding: '0.75rem 1rem',
                 borderRadius: '12px',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 marginBottom: '1.25rem',
                 textAlign: 'right',
               }}
@@ -249,10 +240,10 @@ export default function AdminPage() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} style={{ textAlign: 'right' }}>
-            <div style={{ marginBottom: '1.2rem' }}>
-              <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                البريد الإلكتروني *
+          <form onSubmit={handleLogin} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
+                البريد الإلكتروني الإداري *
               </label>
               <input
                 type="email"
@@ -266,13 +257,13 @@ export default function AdminPage() {
                   borderRadius: '12px',
                   border: '1px solid var(--md-sys-color-outline-variant)',
                   outline: 'none',
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                 }}
               />
             </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 كلمة المرور *
               </label>
               <input
@@ -287,22 +278,17 @@ export default function AdminPage() {
                   borderRadius: '12px',
                   border: '1px solid var(--md-sys-color-outline-variant)',
                   outline: 'none',
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                 }}
               />
             </div>
 
             <button
               type="submit"
-              className="btn btn-primary"
-              style={{
-                width: '100%',
-                padding: '0.85rem',
-                borderRadius: '9999px',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-              }}
+              className="google-fab-extended"
+              style={{ justifyContent: 'center', padding: '0.8rem', fontSize: '0.95rem', marginTop: '0.5rem' }}
             >
+              <span className="material-symbols-rounded">login</span>
               تسجيل الدخول
             </button>
           </form>
@@ -311,9 +297,9 @@ export default function AdminPage() {
             style={{
               marginTop: '1.5rem',
               padding: '0.75rem',
-              background: 'var(--md-sys-color-surface-container-low)',
+              backgroundColor: 'var(--md-sys-color-surface-container-high)',
               borderRadius: '12px',
-              fontSize: '0.8rem',
+              fontSize: '0.78rem',
               color: 'var(--md-sys-color-on-surface-variant)',
             }}
           >
@@ -326,156 +312,49 @@ export default function AdminPage() {
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '90vh', background: 'var(--md-sys-color-surface-container-lowest)' }}>
-      {/* Sidebar */}
-      <aside
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {/* Header Banner (Google Cloud Console style) */}
+      <section
+        className="google-surface-card"
         style={{
-          width: '270px',
-          background: '#FFFFFF',
-          borderLeft: '1px solid var(--md-sys-color-outline-variant)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '1.5rem 1rem',
-          flexShrink: 0,
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F8FC 100%)',
+          padding: '1.75rem 2rem',
         }}
       >
-        <div>
-          {/* Brand header */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', padding: '0 0.5rem' }}>
-            <img src="/images/logo.png" alt="رواق" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-            <div>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0 }}>إدارة رواق RWAQ</h3>
-              <span style={{ fontSize: '0.75rem', color: 'var(--md-sys-color-on-surface-variant)' }}>جامعة الأزهر</span>
-            </div>
-          </div>
-
-          {/* Menu Items */}
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-            {[
-              { id: 'applications', label: 'طلبات التقديم', icon: 'description', count: totalApps },
-              { id: 'startups', label: 'المشروعات المحتضنة', icon: 'rocket_launch', count: activeStartups },
-              { id: 'mentors', label: 'شبكة الموجهين', icon: 'diversity_3' },
-              { id: 'news', label: 'الأخبار والفعاليات', icon: 'newspaper' },
-              { id: 'messages', label: 'الرسائل الواردة', icon: 'mail', count: messages.length },
-              { id: 'firebase', label: 'إعدادات Firebase', icon: 'local_fire_department' },
-            ].map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '9999px',
-                    border: 'none',
-                    background: isActive ? 'rgba(11, 87, 208, 0.1)' : 'transparent',
-                    color: isActive ? 'var(--google-blue)' : 'var(--md-sys-color-on-surface-variant)',
-                    fontWeight: isActive ? 700 : 500,
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                    <span className="material-symbols-rounded" style={{ fontSize: '1.25rem' }}>
-                      {tab.icon}
-                    </span>
-                    <span>{tab.label}</span>
-                  </div>
-                  {tab.count !== undefined && (
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        padding: '0.15rem 0.5rem',
-                        borderRadius: '9999px',
-                        background: isActive ? 'var(--google-blue)' : 'var(--md-sys-color-surface-container-high)',
-                        color: isActive ? '#FFFFFF' : 'var(--md-sys-color-on-surface)',
-                      }}
-                    >
-                      {tab.count}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
-
-        {/* Footer actions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', paddingTop: '1rem', borderTop: '1px solid var(--md-sys-color-outline-variant)' }}>
-          <Link
-            href="/"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.5rem',
-              padding: '0.6rem',
-              borderRadius: '9999px',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-              color: 'var(--md-sys-color-on-surface)',
-              textDecoration: 'none',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-            }}
-          >
-            <span className="material-symbols-rounded" style={{ fontSize: '1.1rem' }}>home</span>
-            العودة للموقع
-          </Link>
-          <button
-            onClick={handleLogout}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.5rem',
-              padding: '0.6rem',
-              borderRadius: '9999px',
-              border: '1px solid rgba(234, 67, 53, 0.3)',
-              background: 'rgba(234, 67, 53, 0.05)',
-              color: 'var(--google-red)',
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
-          >
-            <span className="material-symbols-rounded" style={{ fontSize: '1.1rem' }}>logout</span>
-            تسجيل الخروج
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Admin Content */}
-      <main style={{ flex: 1, padding: '2rem 2.5rem', overflowY: 'auto' }}>
-        {/* Top Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.25rem' }}>
           <div>
-            <h1 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)', margin: 0 }}>
-              {activeTab === 'applications' && 'طلبات التقديم للانضمام'}
-              {activeTab === 'startups' && 'إدارة الشركات المحتضنة'}
-              {activeTab === 'mentors' && 'شبكة الموجهين والخبراء'}
-              {activeTab === 'news' && 'الأخبار والفعاليات المنشورة'}
-              {activeTab === 'messages' && 'الرسائل واستفسارات الاتصال'}
-              {activeTab === 'firebase' && 'إعدادات قاعدة بيانات Firebase'}
-            </h1>
-            <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.88rem', marginTop: '0.25rem' }}>
-              لوحة التحكم والإشراف الفني لمركز الابتكار وريادة الأعمال بجامعة الأزهر
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.4rem',
-                background: 'rgba(52, 168, 83, 0.1)',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: 'var(--google-blue)',
+                backgroundColor: 'var(--google-blue-container)',
+                padding: '0.2rem 0.75rem',
+                borderRadius: '9999px',
+                marginBottom: '0.5rem',
+              }}
+            >
+              <span className="material-symbols-rounded" style={{ fontSize: '0.95rem' }}>admin_panel_settings</span>
+              Google Cloud Console Style
+            </div>
+            <h1 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--md-sys-color-on-surface)' }}>
+              لوحة الإدارة والتحكم المركزي
+            </h1>
+            <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.88rem' }}>
+              إدارة طلبات الاحتضان، بيانات الشركات، الموجهين، الأخبار، والمزامنة السحابية.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                backgroundColor: 'rgba(30, 142, 62, 0.1)',
                 color: 'var(--google-green)',
                 padding: '0.4rem 0.9rem',
                 borderRadius: '9999px',
@@ -483,524 +362,356 @@ export default function AdminPage() {
                 fontWeight: 600,
               }}
             >
-              <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>database</span>
-              الوضع المتصل (Local / Firebase Sync)
+              <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>sync</span>
+              المزامنة السحابية متصلة
             </div>
 
-            {activeTab === 'startups' && (
-              <button
-                onClick={() => setShowAddStartup(true)}
-                className="btn btn-primary"
-                style={{ padding: '0.5rem 1.25rem', borderRadius: '9999px', fontSize: '0.88rem' }}
-              >
-                + إضافة شركة جديدة
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* 4 Metric Cards */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1.25rem',
-            marginBottom: '2rem',
-          }}
-        >
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '20px',
-              padding: '1.25rem 1.5rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-              borderTop: '4px solid var(--google-blue)',
-            }}
-          >
-            <div style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)', fontWeight: 600 }}>إجمالي الطلبات الواردة</div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-blue)', marginTop: '0.3rem' }}>{totalApps}</div>
-          </div>
-
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '20px',
-              padding: '1.25rem 1.5rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-              borderTop: '4px solid var(--google-yellow)',
-            }}
-          >
-            <div style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)', fontWeight: 600 }}>طلبات قيد المراجعة</div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#B06000', marginTop: '0.3rem' }}>{pendingApps}</div>
-          </div>
-
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '20px',
-              padding: '1.25rem 1.5rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-              borderTop: '4px solid var(--google-green)',
-            }}
-          >
-            <div style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)', fontWeight: 600 }}>المشروعات المقبولة</div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-green)', marginTop: '0.3rem' }}>{approvedApps}</div>
-          </div>
-
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '20px',
-              padding: '1.25rem 1.5rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-              borderTop: '4px solid var(--google-red)',
-            }}
-          >
-            <div style={{ fontSize: '0.85rem', color: 'var(--md-sys-color-on-surface-variant)', fontWeight: 600 }}>الشركات المحتضنة</div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-red)', marginTop: '0.3rem' }}>{activeStartups}</div>
-          </div>
-        </div>
-
-        {/* Tab 1: Applications */}
-        {activeTab === 'applications' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '1.75rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>سجل طلبات الاحتضان المقدمة</h3>
-              <button
-                onClick={() => {
-                  const csv = applications.map((a) => `${a.name},${a.email},${a.phone},${a.project},${a.faculty},${a.status}`).join('\n');
-                  const blob = new Blob([csv], { type: 'text/csv' });
-                  const url = URL.createObjectURL(blob);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = 'rwaq_applications.csv';
-                  a.click();
-                }}
-                className="btn btn-secondary"
-                style={{ padding: '0.45rem 1rem', borderRadius: '9999px', fontSize: '0.82rem' }}
-              >
-                تصدير CSV
-              </button>
-            </div>
-
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid var(--md-sys-color-outline-variant)', color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.85rem' }}>
-                    <th style={{ padding: '0.75rem 1rem' }}>صاحب الطلب</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الكلية / الجامعة</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>اسم المشروع</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>المجال</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الحالة</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الإجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {applications.map((app) => (
-                    <tr key={app.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.9rem' }}>
-                      <td style={{ padding: '1rem' }}>
-                        <div style={{ fontWeight: 700 }}>{app.name}</div>
-                        <div style={{ fontSize: '0.78rem', color: 'var(--md-sys-color-on-surface-variant)' }}>{app.email} | {app.phone}</div>
-                      </td>
-                      <td style={{ padding: '1rem' }}>{app.faculty}</td>
-                      <td style={{ padding: '1rem', fontWeight: 600 }}>{app.project}</td>
-                      <td style={{ padding: '1rem' }}>{app.category}</td>
-                      <td style={{ padding: '1rem' }}>
-                        <span
-                          style={{
-                            display: 'inline-block',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '9999px',
-                            fontSize: '0.78rem',
-                            fontWeight: 700,
-                            background:
-                              app.status === 'مقبول'
-                                ? 'rgba(52, 168, 83, 0.12)'
-                                : app.status === 'مرفوض'
-                                ? 'rgba(234, 67, 53, 0.12)'
-                                : 'rgba(251, 188, 4, 0.2)',
-                            color:
-                              app.status === 'مقبول'
-                                ? '#137333'
-                                : app.status === 'مرفوض'
-                                ? '#C5221F'
-                                : '#B06000',
-                          }}
-                        >
-                          {app.status}
-                        </span>
-                      </td>
-                      <td style={{ padding: '1rem' }}>
-                        <div style={{ display: 'flex', gap: '0.4rem' }}>
-                          <button
-                            onClick={() => updateAppStatus(app.id, 'مقبول')}
-                            title="قبول المشروع"
-                            style={{
-                              border: 'none',
-                              background: 'rgba(52, 168, 83, 0.1)',
-                              color: 'var(--google-green)',
-                              padding: '0.35rem 0.65rem',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                              fontWeight: 700,
-                            }}
-                          >
-                            ✓
-                          </button>
-                          <button
-                            onClick={() => updateAppStatus(app.id, 'مرفوض')}
-                            title="رفض"
-                            style={{
-                              border: 'none',
-                              background: 'rgba(234, 67, 53, 0.1)',
-                              color: 'var(--google-red)',
-                              padding: '0.35rem 0.65rem',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                              fontWeight: 700,
-                            }}
-                          >
-                            ✕
-                          </button>
-                          <button
-                            onClick={() => deleteApp(app.id)}
-                            title="حذف"
-                            style={{
-                              border: 'none',
-                              background: 'var(--md-sys-color-surface-container-high)',
-                              color: 'var(--md-sys-color-on-surface-variant)',
-                              padding: '0.35rem 0.65rem',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                            }}
-                          >
-                            🗑
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 2: Startups */}
-        {activeTab === 'startups' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '1.75rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem' }}>قائمة الشركات المحتضنة</h3>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid var(--md-sys-color-outline-variant)', color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.85rem' }}>
-                    <th style={{ padding: '0.75rem 1rem' }}>اسم الشركة</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>القطاع</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>دورة الاحتضان</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الحالة</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>إجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {startups.map((st) => (
-                    <tr key={st.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.9rem' }}>
-                      <td style={{ padding: '1rem', fontWeight: 700 }}>{st.name}</td>
-                      <td style={{ padding: '1rem' }}>{st.category}</td>
-                      <td style={{ padding: '1rem' }}>{st.cycle}</td>
-                      <td style={{ padding: '1rem' }}>
-                        <span style={{ color: 'var(--google-blue)', fontWeight: 600 }}>{st.status}</span>
-                      </td>
-                      <td style={{ padding: '1rem' }}>
-                        <button
-                          onClick={() => setStartups(startups.filter((s) => s.id !== st.id))}
-                          style={{
-                            border: 'none',
-                            background: 'rgba(234, 67, 53, 0.1)',
-                            color: 'var(--google-red)',
-                            padding: '0.35rem 0.65rem',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          حذف
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 3: Mentors */}
-        {activeTab === 'mentors' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '1.75rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem' }}>الموجهون والخبراء</h3>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid var(--md-sys-color-outline-variant)', color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.85rem' }}>
-                    <th style={{ padding: '0.75rem 1rem' }}>اسم الموجه</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>المسمى الوظيفي</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>مجال التخصص</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>إجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {mentors.map((m) => (
-                    <tr key={m.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.9rem' }}>
-                      <td style={{ padding: '1rem', fontWeight: 700 }}>{m.name}</td>
-                      <td style={{ padding: '1rem' }}>{m.title}</td>
-                      <td style={{ padding: '1rem' }}>{m.specialty}</td>
-                      <td style={{ padding: '1rem' }}>
-                        <button
-                          onClick={() => setMentors(mentors.filter((item) => item.id !== m.id))}
-                          style={{
-                            border: 'none',
-                            background: 'rgba(234, 67, 53, 0.1)',
-                            color: 'var(--google-red)',
-                            padding: '0.35rem 0.65rem',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          حذف
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 4: News */}
-        {activeTab === 'news' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '1.75rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem' }}>سجل الأخبار والفعاليات</h3>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid var(--md-sys-color-outline-variant)', color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.85rem' }}>
-                    <th style={{ padding: '0.75rem 1rem' }}>العنوان</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>التاريخ</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الملخص</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>إجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {news.map((n) => (
-                    <tr key={n.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.9rem' }}>
-                      <td style={{ padding: '1rem', fontWeight: 700 }}>{n.title}</td>
-                      <td style={{ padding: '1rem' }}>{n.date}</td>
-                      <td style={{ padding: '1rem' }}>{n.summary}</td>
-                      <td style={{ padding: '1rem' }}>
-                        <button
-                          onClick={() => setNews(news.filter((item) => item.id !== n.id))}
-                          style={{
-                            border: 'none',
-                            background: 'rgba(234, 67, 53, 0.1)',
-                            color: 'var(--google-red)',
-                            padding: '0.35rem 0.65rem',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          حذف
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 5: Messages */}
-        {activeTab === 'messages' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '1.75rem',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem' }}>رسائل التواصل المباشرة</h3>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid var(--md-sys-color-outline-variant)', color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.85rem' }}>
-                    <th style={{ padding: '0.75rem 1rem' }}>المرسل</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الموضوع</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>الرسالة</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>التاريخ</th>
-                    <th style={{ padding: '0.75rem 1rem' }}>إجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {messages.map((m) => (
-                    <tr key={m.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.9rem' }}>
-                      <td style={{ padding: '1rem' }}>
-                        <div style={{ fontWeight: 700 }}>{m.name}</div>
-                        <div style={{ fontSize: '0.78rem', color: 'var(--md-sys-color-on-surface-variant)' }}>{m.email}</div>
-                      </td>
-                      <td style={{ padding: '1rem', fontWeight: 600 }}>{m.subject}</td>
-                      <td style={{ padding: '1rem' }}>{m.message}</td>
-                      <td style={{ padding: '1rem' }}>{m.date}</td>
-                      <td style={{ padding: '1rem' }}>
-                        <button
-                          onClick={() => setMessages(messages.filter((item) => item.id !== m.id))}
-                          style={{
-                            border: 'none',
-                            background: 'rgba(234, 67, 53, 0.1)',
-                            color: 'var(--google-red)',
-                            padding: '0.35rem 0.65rem',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          حذف
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 6: Firebase */}
-        {activeTab === 'firebase' && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '2rem',
-              maxWidth: '750px',
-              boxShadow: 'var(--elevation-1)',
-              border: '1px solid var(--md-sys-color-outline-variant)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span className="material-symbols-rounded" style={{ color: '#F59E0B', fontSize: '2rem' }}>
-                local_fire_department
-              </span>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0 }}>ربط قاعدة بيانات Firebase Firestore</h3>
-            </div>
-            <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-              يمكنك ربط مفاتيح Firebase الخاصة بمشروعك لنقل البيانات فورياً بين الموقع ولوحة التحكم والمزامنة السحابية الدائمة.
-            </p>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert('تم حفظ إعدادات Firebase بنجاح!');
-              }}
+            <button
+              onClick={handleLogout}
+              className="google-icon-btn"
+              title="تسجيل الخروج"
+              style={{ border: '1px solid var(--md-sys-color-outline-variant)' }}
             >
-              <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                  Firebase API Key *
-                </label>
-                <input
-                  type="text"
-                  placeholder="AIzaSyC..."
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '12px',
-                    border: '1px solid var(--md-sys-color-outline-variant)',
-                    outline: 'none',
-                    direction: 'ltr',
-                  }}
-                />
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                    Auth Domain
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="your-project.firebaseapp.com"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '12px',
-                      border: '1px solid var(--md-sys-color-outline-variant)',
-                      outline: 'none',
-                      direction: 'ltr',
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                    Project ID
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="your-project-id"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '12px',
-                      border: '1px solid var(--md-sys-color-outline-variant)',
-                      outline: 'none',
-                      direction: 'ltr',
-                    }}
-                  />
-                </div>
-              </div>
-
-              <button type="submit" className="btn btn-primary" style={{ borderRadius: '9999px', padding: '0.75rem 2rem' }}>
-                حفظ واختبار الاتصال السحابي
-              </button>
-            </form>
+              <span className="material-symbols-rounded" style={{ color: 'var(--google-red)' }}>logout</span>
+            </button>
           </div>
-        )}
-      </main>
+        </div>
+      </section>
+
+      {/* Metrics Row */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
+        <div className="google-metric-card blue">
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--md-sys-color-on-surface-variant)' }}>إجمالي الطلبات</span>
+          <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-blue)' }}>{totalApps}</div>
+        </div>
+        <div className="google-metric-card yellow">
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--md-sys-color-on-surface-variant)' }}>قيد المراجعة</span>
+          <div style={{ fontSize: '2rem', fontWeight: 800, color: '#B06000' }}>{pendingApps}</div>
+        </div>
+        <div className="google-metric-card green">
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--md-sys-color-on-surface-variant)' }}>مشروعات مقبولة</span>
+          <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-green)' }}>{approvedApps}</div>
+        </div>
+        <div className="google-metric-card red">
+          <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--md-sys-color-on-surface-variant)' }}>شركات محتضنة</span>
+          <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--google-red)' }}>{activeStartups}</div>
+        </div>
+      </div>
+
+      {/* Google Cloud Console Tab Navigation Bar */}
+      <div
+        className="google-surface-card"
+        style={{
+          padding: '0.75rem 1.25rem',
+          display: 'flex',
+          gap: '0.5rem',
+          overflowX: 'auto',
+          alignItems: 'center',
+        }}
+      >
+        {[
+          { id: 'applications', label: 'طلبات التقديم', icon: 'description', count: totalApps },
+          { id: 'startups', label: 'الشركات المحتضنة', icon: 'domain', count: activeStartups },
+          { id: 'mentors', label: 'شبكة الموجهين', icon: 'diversity_3' },
+          { id: 'news', label: 'الأخبار والفعاليات', icon: 'newspaper' },
+          { id: 'messages', label: 'رسائل التواصل', icon: 'mail', count: messages.length },
+          { id: 'firebase', label: 'إعدادات Firebase', icon: 'local_fire_department' },
+        ].map((tab) => {
+          const isActive = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`google-chip ${isActive ? 'active' : ''}`}
+              style={{ whiteSpace: 'nowrap' }}
+            >
+              <span className="material-symbols-rounded" style={{ fontSize: '1.1rem' }}>{tab.icon}</span>
+              <span>{tab.label}</span>
+              {tab.count !== undefined && (
+                <span
+                  style={{
+                    backgroundColor: isActive ? 'var(--google-blue)' : 'var(--md-sys-color-surface-container-high)',
+                    color: isActive ? '#ffffff' : 'inherit',
+                    borderRadius: '9999px',
+                    padding: '0.1rem 0.45rem',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                  }}
+                >
+                  {tab.count}
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Active Tab Content */}
+      {activeTab === 'applications' && (
+        <div className="google-surface-card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--md-sys-color-outline-variant)' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>سجل طلبات التقديم</h3>
+            <button
+              onClick={() => {
+                const csv = applications.map((a) => `${a.name},${a.email},${a.phone},${a.project},${a.faculty},${a.status}`).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'rwaq_applications.csv';
+                a.click();
+              }}
+              className="google-chip"
+              style={{ fontSize: '0.8rem' }}
+            >
+              <span className="material-symbols-rounded" style={{ fontSize: '1rem' }}>download</span>
+              تصدير CSV
+            </button>
+          </div>
+
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--md-sys-color-surface-container-low)', fontSize: '0.82rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>صاحب الطلب</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>الكلية / الجامعة</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>المشروع المقترح</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>المجال</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>الحالة</th>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {applications.map((app) => (
+                  <tr key={app.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.88rem' }}>
+                    <td style={{ padding: '1rem 1.25rem' }}>
+                      <div style={{ fontWeight: 700 }}>{app.name}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--md-sys-color-outline)' }}>{app.email} • {app.phone}</div>
+                    </td>
+                    <td style={{ padding: '1rem' }}>{app.faculty}</td>
+                    <td style={{ padding: '1rem', fontWeight: 600 }}>{app.project}</td>
+                    <td style={{ padding: '1rem' }}>{app.category}</td>
+                    <td style={{ padding: '1rem' }}>
+                      <span
+                        style={{
+                          padding: '0.2rem 0.65rem',
+                          borderRadius: '9999px',
+                          fontSize: '0.75rem',
+                          fontWeight: 700,
+                          backgroundColor:
+                            app.status === 'مقبول'
+                              ? 'rgba(30, 142, 62, 0.12)'
+                              : app.status === 'مرفوض'
+                              ? 'rgba(217, 48, 37, 0.12)'
+                              : 'rgba(249, 171, 0, 0.2)',
+                          color:
+                            app.status === 'مقبول'
+                              ? '#137333'
+                              : app.status === 'مرفوض'
+                              ? '#D93025'
+                              : '#B06000',
+                        }}
+                      >
+                        {app.status}
+                      </span>
+                    </td>
+                    <td style={{ padding: '1rem 1.25rem' }}>
+                      <div style={{ display: 'flex', gap: '0.35rem' }}>
+                        <button
+                          onClick={() => updateAppStatus(app.id, 'مقبول')}
+                          title="قبول"
+                          style={{
+                            border: 'none',
+                            backgroundColor: 'rgba(30, 142, 62, 0.1)',
+                            color: 'var(--google-green)',
+                            padding: '0.3rem 0.6rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            fontWeight: 700,
+                          }}
+                        >
+                          ✓
+                        </button>
+                        <button
+                          onClick={() => updateAppStatus(app.id, 'مرفوض')}
+                          title="رفض"
+                          style={{
+                            border: 'none',
+                            backgroundColor: 'rgba(217, 48, 37, 0.1)',
+                            color: 'var(--google-red)',
+                            padding: '0.3rem 0.6rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            fontWeight: 700,
+                          }}
+                        >
+                          ✕
+                        </button>
+                        <button
+                          onClick={() => deleteApp(app.id)}
+                          title="حذف"
+                          style={{
+                            border: 'none',
+                            backgroundColor: 'var(--md-sys-color-surface-container-high)',
+                            color: 'var(--md-sys-color-outline)',
+                            padding: '0.3rem 0.6rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          🗑
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Startups */}
+      {activeTab === 'startups' && (
+        <div className="google-surface-card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--md-sys-color-outline-variant)' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>دليل الشركات المحتضنة</h3>
+            <button onClick={() => setShowAddStartup(true)} className="google-fab-extended" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+              + إضافة شركة
+            </button>
+          </div>
+
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--md-sys-color-surface-container-low)', fontSize: '0.82rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>اسم الشركة</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>القطاع</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>دورة الاحتضان</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>الحالة</th>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {startups.map((st) => (
+                  <tr key={st.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.88rem' }}>
+                    <td style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>{st.name}</td>
+                    <td style={{ padding: '1rem' }}>{st.category}</td>
+                    <td style={{ padding: '1rem' }}>{st.cycle}</td>
+                    <td style={{ padding: '1rem', color: 'var(--google-blue)', fontWeight: 600 }}>{st.status}</td>
+                    <td style={{ padding: '1rem 1.25rem' }}>
+                      <button
+                        onClick={() => setStartups(startups.filter((s) => s.id !== st.id))}
+                        style={{ border: 'none', background: 'none', color: 'var(--google-red)', cursor: 'pointer', fontWeight: 600, fontSize: '0.82rem' }}
+                      >
+                        حذف
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Mentors */}
+      {activeTab === 'mentors' && (
+        <div className="google-surface-card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--md-sys-color-outline-variant)' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>شبكة الموجهين والخبراء</h3>
+          </div>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--md-sys-color-surface-container-low)', fontSize: '0.82rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>الاسم</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>المسمى والخبرة</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>التخصص</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mentors.map((m) => (
+                  <tr key={m.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.88rem' }}>
+                    <td style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>{m.name}</td>
+                    <td style={{ padding: '1rem' }}>{m.title}</td>
+                    <td style={{ padding: '1rem' }}>{m.specialty}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Messages */}
+      {activeTab === 'messages' && (
+        <div className="google-surface-card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--md-sys-color-outline-variant)' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>رسائل التواصل الواردة عبر الموقع</h3>
+          </div>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--md-sys-color-surface-container-low)', fontSize: '0.82rem', color: 'var(--md-sys-color-on-surface-variant)' }}>
+                  <th style={{ padding: '0.85rem 1.25rem' }}>المرسل</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>الموضوع</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>الرسالة</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>التاريخ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {messages.map((msg) => (
+                  <tr key={msg.id} style={{ borderBottom: '1px solid var(--md-sys-color-outline-variant)', fontSize: '0.88rem' }}>
+                    <td style={{ padding: '1rem 1.25rem' }}>
+                      <div style={{ fontWeight: 700 }}>{msg.name}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--md-sys-color-outline)' }}>{msg.email}</div>
+                    </td>
+                    <td style={{ padding: '1rem', fontWeight: 600 }}>{msg.subject}</td>
+                    <td style={{ padding: '1rem' }}>{msg.message}</td>
+                    <td style={{ padding: '1rem', fontSize: '0.8rem', color: 'var(--md-sys-color-outline)' }}>{msg.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Tab: Firebase */}
+      {activeTab === 'firebase' && (
+        <div className="google-surface-card" style={{ maxWidth: '700px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
+            <span className="material-symbols-rounded" style={{ color: '#F59E0B', fontSize: '1.8rem' }}>local_fire_department</span>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>ربط قاعدة بيانات Firebase Firestore</h3>
+          </div>
+          <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '0.88rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+            قم بإدخال بيانات مشروعك في Google Cloud / Firebase لتمكين المزامنة الفورية السحابية للطلبات وقاعدة البيانات.
+          </p>
+
+          <form onSubmit={(e) => { e.preventDefault(); alert('تم حفظ الإعدادات بنجاح!'); }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>Firebase API Key *</label>
+              <input type="text" placeholder="AIzaSyC..." style={{ width: '100%', padding: '0.75rem', borderRadius: '12px', border: '1px solid var(--md-sys-color-outline-variant)', direction: 'ltr' }} />
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>Auth Domain</label>
+                <input type="text" placeholder="rwaq-app.firebaseapp.com" style={{ width: '100%', padding: '0.75rem', borderRadius: '12px', border: '1px solid var(--md-sys-color-outline-variant)', direction: 'ltr' }} />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>Project ID</label>
+                <input type="text" placeholder="rwaq-azhar" style={{ width: '100%', padding: '0.75rem', borderRadius: '12px', border: '1px solid var(--md-sys-color-outline-variant)', direction: 'ltr' }} />
+              </div>
+            </div>
+
+            <button type="submit" className="google-fab-extended" style={{ justifyContent: 'center', padding: '0.8rem', marginTop: '0.5rem' }}>
+              حفظ وتأكيد الاتصال
+            </button>
+          </form>
+        </div>
+      )}
 
       {/* Add Startup Modal */}
       {showAddStartup && (
@@ -1009,7 +720,7 @@ export default function AdminPage() {
             position: 'fixed',
             inset: 0,
             zIndex: 1200,
-            background: 'rgba(0, 0, 0, 0.45)',
+            backgroundColor: 'rgba(0, 0, 0, 0.45)',
             backdropFilter: 'blur(6px)',
             display: 'flex',
             alignItems: 'center',
@@ -1019,20 +730,14 @@ export default function AdminPage() {
           onClick={() => setShowAddStartup(false)}
         >
           <div
-            style={{
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '2rem',
-              maxWidth: '520px',
-              width: '100%',
-              boxShadow: 'var(--elevation-3)',
-            }}
+            className="google-surface-card"
+            style={{ maxWidth: '500px', width: '100%' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '1.5rem' }}>إضافة شركة جديدة لدليل رواق</h3>
-            <form onSubmit={handleAddStartup}>
-              <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem' }}>اسم الشركة *</label>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '1.25rem' }}>إضافة شركة جديدة</h3>
+            <form onSubmit={handleAddStartup} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>اسم الشركة *</label>
                 <input
                   type="text"
                   required
@@ -1043,8 +748,8 @@ export default function AdminPage() {
                 />
               </div>
 
-              <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem' }}>القطاع والتخصص</label>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>القطاع</label>
                 <select
                   value={newStartup.category}
                   onChange={(e) => setNewStartup({ ...newStartup, category: e.target.value })}
@@ -1054,12 +759,11 @@ export default function AdminPage() {
                   <option value="التكنولوجيا الطبية والصحية">التكنولوجيا الطبية والصحية</option>
                   <option value="الزراعة والتكنولوجيا البيئية">الزراعة والتكنولوجيا البيئية</option>
                   <option value="التدوير والتكنولوجيا الخضراء">التدوير والتكنولوجيا الخضراء</option>
-                  <option value="التكنولوجيا المالية">التكنولوجيا المالية</option>
                 </select>
               </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '0.35rem' }}>دورة الاحتضان</label>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>دورة الاحتضان</label>
                 <input
                   type="text"
                   value={newStartup.cycle}
@@ -1068,18 +772,9 @@ export default function AdminPage() {
                 />
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
-                <button
-                  type="button"
-                  onClick={() => setShowAddStartup(false)}
-                  className="btn btn-secondary"
-                  style={{ borderRadius: '9999px' }}
-                >
-                  إلغاء
-                </button>
-                <button type="submit" className="btn btn-primary" style={{ borderRadius: '9999px' }}>
-                  حفظ الشركة
-                </button>
+              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
+                <button type="button" onClick={() => setShowAddStartup(false)} className="google-chip">إلغاء</button>
+                <button type="submit" className="google-fab-extended" style={{ padding: '0.5rem 1.25rem', fontSize: '0.88rem' }}>حفظ الشركة</button>
               </div>
             </form>
           </div>
